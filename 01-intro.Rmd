@@ -1,0 +1,150 @@
+# R operators 
+
+## Arithmetic operators 
+
+The R arithmetic operators allows us to do math operations, like sums, divisions or multiplications, among others. The following table summarizes all base R arithmetic operators.  
+
+
+*Arithmetic operators*  
+`+` 	Plus  
+`–` 	Minus  
+`*` 	Multiplication  
+`/` 	Division  
+`^` 	Exponential  
+`**` 	Exponential  
+
+*Basic operations*
+```{r}
+
+3 + 5   # 8
+8 - 3   # 5
+7 * 5   # 35
+1/2     # 0.5
+4 ^ 4   # 256
+4 ** 4  # 256
+5 %% 3  # 2
+5 %/% 3 # 1
+```
+
+
+## Functions
+R has many built-in functions. The most common situation is that the function is called by its name using prefix notation, followed by round brackets that enclose the function’s arguments (separated by commas if there are multiple arguments). For example, the function round takes a number and, by default, returns the closest integer:
+```{r}
+# the function `round` takes a number as an argument and 
+# returns the closest integer (default)
+round(0.6213)
+```
+
+`round` allows several arguments. It takes as input the number `x` to be rounded and another integer number digits which gives the number of `digits` after the comma to which `x` should be rounded. We can then specify these arguments in a function call of round by providing the named arguments.
+
+```{r}
+round(0.6213, digits = 2)
+```
+
+Example of another function, `sum`
+
+```{r}
+sum(1, 2, 3)
+```
+
+##  Reserved words
+
+There are also reserved words you can’t use, like `TRUE`, `FALSE`, `NULL`, among others. You can see the full list of R reserved words typing `help(Reserved)` or `?Reserved`. It not advisable to use these words outside quotes ('', "") or backtick (`) quotes.     
+
+## Variables 
+
+You can assign values to variables using three assignment operators:   
+`->`  
+`<-`  
+`=`
+```{r}
+a <- 6       # assigns 6 to variable a
+7 -> b       # assigns 7 to variable b
+c = 3        # assigns 3 to variable c, use of = is not widly accepted!
+d <-  a * b / c   # assigns 6 * 7 / 3 = 14 to variable d
+d           # returns d
+```
+Use `print()` function to see the output
+
+`print(a)`  
+`print(7)`  
+`print(c)`  
+`print(d)`  
+
+## Documenting code
+
+It is good practice to document code with short but informative comments. Comments in R are demarcated with `#`.
+
+```{r}
+round(             # call the function `round`
+  sum(2.213*3.123),# find sum of 2.213*3.123
+  digits = 2       # show the sum with two digits after the `.`
+)
+```
+
+In RStudio, you can use Command+Shift+C (on Mac) and Ctrl+Shift+C (on Windows/Linux) to comment or uncomment code, and you can use comments to structure your scripts.
+Any comment followed by ---- is treated as a (foldable) section in RStudio.
+
+
+
+```{r}
+# SECTION: variable assignments ----
+x <- 6
+y <- 7
+```
+
+
+```{r}
+# SECTION: some calculations ----
+
+x * y
+```
+
+
+## Relational / comparison operators in R 
+Comparison or relational operators are designed to compare objects and the output of these comparisons are of type boolean. To clarify, the following table summarizes the R relational operators.
+
+Relational operators in R   
+`>` 	Greater than  
+`<` 	Lower than  
+`>=` 	Greater or equal than  
+`<=` 	Lower or equal than  
+`==` 	Equal to  
+`!=` 	Not equal to  
+
+```{r}
+3 > 5  # FALSE
+3 < 5  # TRUE
+3 >= 5 # FALSE
+3 <= 5 # TRUE
+3 == 5 # FALSE
+3 != 5 # TRUE
+```
+
+## Data types
+To learn a programming language entails to first learn something about what kinds of objects we will have to deal with. Let’s therefore briefly go through the data types. We can assess the type of an object stored in variable `x` with the function `typeof(x)`. 
+
+```{r}
+x <- 1
+typeof(x)
+
+x <- "hello"
+typeof(x)
+
+x <- TRUE
+typeof(x)
+
+x <- mean
+typeof(x)
+```
+
+It is possible to cast objects of one type into another type using functions `as.` in base R.
+
+```{r}
+x <- as.numeric(1) # "double"
+typeof(x) 
+
+x <- as.character(1) # "character"
+typeof(x)
+```
+

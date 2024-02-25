@@ -1,0 +1,21 @@
+# List & Data frame
+Lists are very important in R because almost all structured data that belongs together is stored as lists. Objects are special kinds of lists. Data is stored in special kinds of lists, so-called data frames or so-called tibbles.
+
+A data frame is base R’s standard format to store data in. A data frame is a list of vectors of equal length. Data sets are instantiated with the function `data.frame`.
+
+## Making a data frame
+
+```{r}
+name = c("saneesh", "sanusha", "appu", "jaru")
+sex = c(2, 0, 5, 8)
+
+df <- data.frame(name, sex)
+
+df <- # df= data frame
+  data.frame(name = c("saneesh", "sanusha", "appu", "jaru"),
+             sex = c(2, 0, 5, 8))
+```
+
+
+
+

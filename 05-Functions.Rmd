@@ -1,0 +1,45 @@
+# Names functions
+The special operator supplied by base R to create new function is the keyword `function`. Here is an example of defining a new function with two input variables `x` and `y` that returns a computation based on these numbers. We assign a newly created function to the variable cool_function so that we can use this name to call the function later. Notice that the use of the return keyword is optional here. If it is left out, the evaluation of the last line is returned.
+
+```{r}
+# define a new function
+# - takes two numbers x & y as argument
+# - returns x + y
+
+sum_function <- function(x, y) {
+  z = x + y
+  return(z)
+}
+
+sum_function(x = 1, y = 4)
+sum_function(12, 4)
+
+```
+
+
+```{r}
+# define a new function
+# we know x and total we want to calculate percentage
+
+percentage_function <- function(x, y) {
+  percentage = (x / y)*100
+  return(percentage)
+}
+
+percentage_function (360, 600)
+```
+
+
+```{r}
+# we know percentage and total we want to calculate x
+
+reverse_percentage_function <- function(x, y) {
+  percentage = (x / 100)*y
+  return(percentage)
+}
+
+reverse_percentage_function (60, 600)
+```
+
+## Loops and maps
+

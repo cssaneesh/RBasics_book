@@ -1,0 +1,6 @@
+# Data Visualization
+Condensing intricate data into numerical summaries inevitably leads to some loss of information. Visualization, though it also involves some information loss, can be less so when executed effectively. A thorough data analysis should always begin with a phase where the analyst deeply familiarizes themselves with the data they're working with. This process of gaining a deep understanding is integral to data analysis, and visualization plays a crucial role in it.  
+
+    The vague & defeasible rule of thumb of good data visualization (according to the Edward Tufte).
+
+    “Communicate a maximal degree of relevant true information in a way that minimizes the recipient’s effort of retrieving this information.”

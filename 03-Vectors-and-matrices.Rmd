@@ -1,0 +1,161 @@
+# Vectors & matrices
+R is essentially an array-based language. Arrays are arbitrary but finite-dimensional matrices.   
+  * vectors = one-dimensional arrays  
+  * matrices = two-dimensional arrays  
+  * arrays = more-than-two-dimensional, it is important to keep in mind that arrays can contain objects of other types than numeric information (as long as all objects in the array are of the same type).  
+  
+## Numeric vector 
+```{r}
+x <- 1
+print(x)
+```
+Vectors in general can be declared with the built-in function `c()`. To memorize this, think of concatenation or combination.
+
+There are also helpful functions to generate sequences of numbers:
+
+```{r}
+x <- seq(1:10)
+x # or
+print(x)
+
+
+```
+
+## Mathematical operation
+
+Every mathematical operation can be expected to apply to a vector.
+
+```{r}
+a <- c(2, 4, 6, 8) 
+a+1
+a*4
+a/0.5
+
+b <- c(8, 6, 4, 2) 
+
+a+b
+a*b
+```
+
+
+## Indexing
+Indexing in R starts with 1, not 0.
+
+```{r}
+x <- c(2, 4, 6, 8)   # this is now a 4-place vector
+x
+x[2] # what is the entry in position 2 of the vector x?
+x[1] # what is the entry in position 1 of the vector x?
+
+```
+
+## Numeric matrices
+
+```{r}
+x <- seq(1:10)
+m1 <- matrix(x)
+m1
+
+m <- matrix(1:6, ncol = 3)
+m
+
+```
+
+## Names for vectors, matrices and arrays
+The positions in a vector can be given names. These names of vector `x` positions are retrieved and set by the `names` function.
+
+```{r}
+students <- c("Prachi", "Rishi", "Soumya")  # names of students
+grades <- c(1.3, 2.7, 2.0)              # a vector of grades
+
+names(grades) <- students  # assign names
+names(grades)              # retrieve names again: names assigned
+
+```
+
+## Characters or strings
+Strings are called characters in R. We will be stubborn and call them strings for most of the time here. We can assign a string value to a variable by putting the string in double-quotes.
+
+```{r}
+institute <- 'TISS'
+typeof(institute)
+print(institute)
+
+```
+
+Create vectors of characters
+
+```{r}
+chr_vector <- c("small", "medium", "large")
+print(chr_vector)
+chr_vector
+typeof(chr_vector)
+
+```
+
+
+Factors are special vectors, which treat their elements as instances of a finite set of categories.
+```{r}
+factor_vector <- as.factor(c("small", "medium", "large"))
+print(factor_vector)
+factor_vector
+typeof(factor_vector)
+levels(factor_vector) # alphabetically ordered
+
+```
+
+A factor in R is a data structure used to represent a vector as categorical data. Therefore, the factor object takes a bounded number of different values called levels. Factors are very useful when working with character columns of data frames, for creating barplots and creating statistical summaries for categorical variables.  
+
+For plotting or other representational purposes, it can help to manually specify an ordering on the `levels` of a factor using the levels argument.
+
+```{r}
+factor(factor_vector, levels = c('large', 'medium', 'small'))
+levels(factor_vector) # ordered the way we want
+
+
+```
+
+
+```{r}
+days <- c("Friday", "Tuesday", "Thursday", "Monday", "Wednesday", "Monday",
+          "Wednesday", "Monday", "Monday", "Wednesday", "Sunday", "Saturday")
+
+# Levels in alphabetical order
+my_factor <- factor(days)
+my_factor
+```
+
+Convert numeric to factor in R.  
+Suppose you have registered the birth city of six individuals with the following codification:
+1. Mumbai
+2. Chennai
+3. Bangalore
+3. Cochin  
+Hence, you will have something like the following data stored in a numeric vector:
+```{r}
+# Sample data
+city <- c(3, 2, 1, 4, 3, 2)
+```
+
+Now, you can call the `factor` to convert the data into factor and get it categorized for further analysis.
+```{r}
+my_factor <- factor(city)
+my_factor
+```
+
+If the input vector is numeric, as in the previous section, the corresponding label (the city) is not reflected. In order to solve this issue, you can store the data in a factor object using the `factor` function and indicate the corresponding `labels` of the levels in the labels argument, in order to rename the factor `levels`.
+```{r}
+# Setting the labels in the corresponding order
+factor_cities <- factor(city, labels = c("Mumbai", "Chennai", "Bangalore", "Cochin"))
+
+# Print the result
+factor_cities
+```
+
+
+
+
+
+
+
+
