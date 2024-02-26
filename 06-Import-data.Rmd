@@ -45,26 +45,3 @@ library(readr)
 
 Look at the data preview, import options (change `Name` if needed), click `Import`. or copy code from `code preview`, click on `cancel` and paste the code on the script panel and `Run`. If you don't have `readr` package `R` will show an error, don't worry read the message and `install.packages('readr')` will solve the problem, then run the code again.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-
-```
-
-
-

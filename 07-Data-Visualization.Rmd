@@ -4,3 +4,118 @@ Condensing intricate data into numerical summaries inevitably leads to some loss
     The vague & defeasible rule of thumb of good data visualization (according to the Edward Tufte).
 
     “Communicate a maximal degree of relevant true information in a way that minimizes the recipient’s effort of retrieving this information.”
+    
+    
+    
+```{r}
+
+
+# treatment (factor)
+# 5 fertilized
+# 5 unfertilized
+library(ggplot2)
+library(dplyr)
+
+name <- c(rep('cashew', 10), 
+          rep('teak', 10))
+
+
+gbh <- rnorm(20,
+             mean = 30,
+             sd = 5)
+
+# make a data frame
+
+
+
+# 20 trees of same sp.
+# different GBH
+
+name <- c(rep('cashew', 10), 
+          rep('teak', 10))
+
+gbh <- rnorm(20,
+             mean = 30,
+             sd = 5)
+
+df <- data.frame(name, gbh)
+
+View(df)
+
+library(dplyr)
+
+newdf <- df %>% 
+  mutate(co2= gbh * rnorm(20, 0.2, 0.1)) # co2 is a new column based gbh
+
+str(newdf)
+
+ggplot(data = newdf, aes(y = co2, x = gbh, col= name)) +
+  geom_point()+
+    geom_smooth(method = 'lm')
+
+ggplot(data = newdf, aes(y = co2, x = name, fill= name)) +
+  geom_boxplot()
+
+ggplot(data = newdf, aes(y = gbh, x = name, fill= name)) +
+  geom_boxplot()
+
+
+# new df with treatment
+set.seed(007) # any number
+
+
+
+treatment <- c(rep('nofertilizer', 50), 
+               rep('fertilizer', 50))
+
+name <- c(rep('cashew', 100), 
+          rep('teak', 100))
+
+gbh <- c(rnorm(50,
+             mean = 15,
+             sd = 4),
+         rnorm(50,
+               mean = 30,
+               sd = 6))
+
+df <- data.frame(treatment, 
+                 name, 
+                 gbh)
+
+str(df)
+
+co <- rnorm(20, 0.2, 0.1) # kg
+
+newdf <- df %>% 
+  mutate(co2= gbh * co) # co2 is a new column based gbh
+
+str(newdf)
+names(newdf)
+
+ggplot(data = newdf, aes(x = gbh, y = co2, col= name)) +
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  facet_wrap(~ name)
+
+# ?facet_wrap
+# help(facet_wrap)
+
+ggplot(data = newdf, aes(x = treatment, y = co2, fill= name)) +
+  geom_boxplot() +
+  facet_wrap(~ name)
+
+ggplot(data = newdf, aes(y = co2, x = name, fill= name)) +
+  geom_boxplot()
+
+ggplot(data = newdf, aes(y = gbh, x = name, fill= name)) +
+  geom_boxplot()
+
+
+
+
+
+
+
+```
+    
+    
