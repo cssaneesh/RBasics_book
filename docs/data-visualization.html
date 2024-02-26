@@ -248,8 +248,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb132-32"><a href="data-visualization.html#cb132-32" tabindex="-1"></a><span class="fu">str</span>(newdf)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
 ##  $ name: chr  &quot;cashew&quot; &quot;cashew&quot; &quot;cashew&quot; &quot;cashew&quot; ...
-##  $ gbh : num  29.4 30.9 31 28.4 29.7 ...
-##  $ co2 : num  4.12 8.12 12.58 5.43 9.22 ...</code></pre>
+##  $ gbh : num  32.2 27.6 19.8 30.7 29.8 ...
+##  $ co2 : num  7.45 3.81 7.55 3.28 6.31 ...</code></pre>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-visualization.html#cb134-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">y =</span> co2, <span class="at">x =</span> gbh, <span class="at">col=</span> name)) <span class="sc">+</span></span>
 <span id="cb134-2"><a href="data-visualization.html#cb134-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb134-3"><a href="data-visualization.html#cb134-3" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
