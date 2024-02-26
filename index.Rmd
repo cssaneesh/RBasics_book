@@ -17,12 +17,10 @@ github-repo: rstudio/bookdown-demo
 
 This is an introduction to Basics of R using `tidyverse` packages (Figure 1.1) and wrote using the `bookdown` package.
 
-
 ```{r, echo= FALSE, out.width= "70%", fig.align='center', fig.cap= 'Tidyverse packages'}
  knitr::include_graphics('pictures/tidyverse-overview.png') 
 
 ```
-
 
 ## Installation
 
