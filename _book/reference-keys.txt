@@ -1,5 +1,4 @@
 fig:unnamed-chunk-1
-fig:unnamed-chunk-2
 fig:unnamed-chunk-3
 fig:unnamed-chunk-4
 fig:unnamed-chunk-5
@@ -7,10 +6,14 @@ fig:unnamed-chunk-6
 fig:unnamed-chunk-7
 fig:unnamed-chunk-8
 fig:unnamed-chunk-9
-fig:unnamed-chunk-23
-fig:unnamed-chunk-44
-fig:unnamed-chunk-45
+fig:unnamed-chunk-10
+fig:unnamed-chunk-25
+fig:unnamed-chunk-46
+fig:unnamed-chunk-47
+fig:unnamed-chunk-50
+fig:unnamed-chunk-64
 about
+how-to-use-this-book
 installation
 project
 r-operators
@@ -22,6 +25,7 @@ documenting-code
 relational-comparison-operators-in-r
 data-types
 installing-r-packages
+package
 vectors-matrices
 numeric-vector
 mathematical-operation
@@ -34,4 +38,14 @@ making-a-data-frame
 names-functions
 loops-and-maps
 import-data
+importing-from-.csv-file
+read-.csv
 data-visualization
+scatter-plot
+let-us-make-some-data.
+carbon-calculator-function
+box-plot
+wordcloud
+wordcloud-from-data-frame
+read-data
+wordcloud-from-text-data

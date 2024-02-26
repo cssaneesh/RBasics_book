@@ -1,26 +1,33 @@
 --- 
-title: "Basics of R"
+title: "An introduction R"
 author: "Saneesh"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
+urlcolor: blue
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
-  This is an introduction to Basics of R using tidy packages and wrote using the bookdown package.
+  This book is an an introduction R using tidyverse packages and wrote using the bookdown package.
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
 # About
 
-This is an introduction to Basics of R using `tidyverse` packages (Figure 1.1) and wrote using the `bookdown` package.
-
+This is book is an introduction to R using `tidyverse` packages (Figure 1.1) and wrote using the `bookdown` package.
 ```{r, echo= FALSE, out.width= "70%", fig.align='center', fig.cap= 'Tidyverse packages'}
  knitr::include_graphics('pictures/tidyverse-overview.png') 
 
 ```
+## How to use this book
+
+Any text see inside the `grey` box is a `code`, you can copy that and paste in your `R` script.
+```{r}
+sum(1+2)
+```
+Any text or line starts with `## [1] 3` is an output of the code.
 
 ## Installation
 
@@ -29,7 +36,6 @@ Download and install `R`. Follow the link below and choose the appropriate versi
 Link: [R-Windows](https://cran.r-project.org/bin/windows/base/)  
 Link: [R-Mac](https://cran.r-project.org/bin/macosx/)  
 Link: [R-Ubuntu](https://cran.r-project.org/bin/linux/ubuntu/fullREADME.html)  
-
 Download and install `RStudio`. `RStudio` is an interface which facilitates coding in `R`. We recommend `RStudio` Desktop.
 
 Link: [RStudio](https://posit.co/download/rstudio-desktop/)
@@ -43,17 +49,14 @@ RStudio projects make it straightforward to divide your work into multiple conte
 ```
 E.g, I made a folder `TISS_R` 
 
-
 ```{r, echo= FALSE, out.width= "70%", fig.align='center', fig.cap= 'New Folder'}
  knitr::include_graphics('pictures/Slide6.jpg') 
-
 ```
 
 2. Open `RStudio` and start a `New Project`
 
 ```{r, echo= FALSE, out.width= "70%", fig.align='center', fig.cap= 'New Project'}
  knitr::include_graphics('pictures/Slide7.jpg') 
-
 ```
 Or from `File` > `New Project`
 Because we have a folder made with name `TISS_R` I am going to select `Existing Directory` if you don't have a folder select `New Directory` and select a location. The name of the directory or the folder will be the new project's name.

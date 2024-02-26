@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Data Visualization | Basics of R</title>
-  <meta name="description" content="This is an introduction to Basics of R using tidy packages and wrote using the bookdown package." />
+  <title>Chapter 8 Data Visualization | An introduction R</title>
+  <meta name="description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Data Visualization | Basics of R" />
+  <meta property="og:title" content="Chapter 8 Data Visualization | An introduction R" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is an introduction to Basics of R using tidy packages and wrote using the bookdown package." />
+  <meta property="og:description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Data Visualization | Basics of R" />
+  <meta name="twitter:title" content="Chapter 8 Data Visualization | An introduction R" />
   
-  <meta name="twitter:description" content="This is an introduction to Basics of R using tidy packages and wrote using the bookdown package." />
+  <meta name="twitter:description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
   
 
 <meta name="author" content="Saneesh" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="import-data.html"/>
-
+<link rel="next" href="wordcloud.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,13 +137,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Basics of R</a></li>
+<li><a href="./">An introduction R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.1</b> Installation</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#project"><i class="fa fa-check"></i><b>1.2</b> Project</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>1.1</b> How to use this book</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.2</b> Installation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#project"><i class="fa fa-check"></i><b>1.3</b> Project</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="r-operators.html"><a href="r-operators.html"><i class="fa fa-check"></i><b>2</b> R operators</a>
 <ul>
@@ -155,7 +156,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="r-operators.html"><a href="r-operators.html#relational-comparison-operators-in-r"><i class="fa fa-check"></i><b>2.6</b> Relational / comparison operators in R</a></li>
 <li class="chapter" data-level="2.7" data-path="r-operators.html"><a href="r-operators.html#data-types"><i class="fa fa-check"></i><b>2.7</b> Data types</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>3</b> Installing R packages</a></li>
+<li class="chapter" data-level="3" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>3</b> Installing R packages</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="installing-r-packages.html"><a href="installing-r-packages.html#package"><i class="fa fa-check"></i><b>3.1</b> Package</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="vectors-matrices.html"><a href="vectors-matrices.html"><i class="fa fa-check"></i><b>4</b> Vectors &amp; matrices</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="vectors-matrices.html"><a href="vectors-matrices.html#numeric-vector"><i class="fa fa-check"></i><b>4.1</b> Numeric vector</a></li>
@@ -173,8 +177,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.1" data-path="names-functions.html"><a href="names-functions.html#loops-and-maps"><i class="fa fa-check"></i><b>6.1</b> Loops and maps</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="import-data.html"><a href="import-data.html"><i class="fa fa-check"></i><b>7</b> Import data</a></li>
-<li class="chapter" data-level="8" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>8</b> Data Visualization</a></li>
+<li class="chapter" data-level="7" data-path="import-data.html"><a href="import-data.html"><i class="fa fa-check"></i><b>7</b> Import data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="import-data.html"><a href="import-data.html#importing-from-.csv-file"><i class="fa fa-check"></i><b>7.1</b> Importing from .csv file</a></li>
+<li class="chapter" data-level="7.2" data-path="import-data.html"><a href="import-data.html#read-.csv"><i class="fa fa-check"></i><b>7.2</b> Read .csv</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>8</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-visualization.html"><a href="data-visualization.html#scatter-plot"><i class="fa fa-check"></i><b>8.1</b> Scatter plot</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="data-visualization.html"><a href="data-visualization.html#let-us-make-some-data."><i class="fa fa-check"></i><b>8.1.1</b> Let us make some data.</a></li>
+<li class="chapter" data-level="8.1.2" data-path="data-visualization.html"><a href="data-visualization.html#carbon-calculator-function"><i class="fa fa-check"></i><b>8.1.2</b> carbon calculator function</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data-visualization.html"><a href="data-visualization.html#box-plot"><i class="fa fa-check"></i><b>8.2</b> Box plot</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wordcloud.html"><a href="wordcloud.html"><i class="fa fa-check"></i><b>9</b> Wordcloud</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="wordcloud.html"><a href="wordcloud.html#wordcloud-from-data-frame"><i class="fa fa-check"></i><b>9.1</b> Wordcloud from data frame</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="wordcloud.html"><a href="wordcloud.html#read-data"><i class="fa fa-check"></i><b>9.1.1</b> Read data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="wordcloud.html"><a href="wordcloud.html#wordcloud-from-text-data"><i class="fa fa-check"></i><b>9.2</b> Wordcloud from text data</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -187,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Basics of R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An introduction R</a>
           </h1>
         </div>
 
@@ -198,14 +222,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-visualization" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Data Visualization<a href="data-visualization.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Condensing intricate data into numerical summaries inevitably leads to some loss of information. Visualization, though it also involves some information loss, can be less so when executed effectively. A thorough data analysis should always begin with a phase where the analyst deeply familiarizes themselves with the data they’re working with. This process of gaining a deep understanding is integral to data analysis, and visualization plays a crucial role in it.</p>
-<pre><code>The vague &amp; defeasible rule of thumb of good data visualization (according to the Edward Tufte).
-
-“Communicate a maximal degree of relevant true information in a way that minimizes the recipient’s effort of retrieving this information.”</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-visualization.html#cb128-1" tabindex="-1"></a><span class="co"># treatment (factor)</span></span>
-<span id="cb128-2"><a href="data-visualization.html#cb128-2" tabindex="-1"></a><span class="co"># 5 fertilized</span></span>
-<span id="cb128-3"><a href="data-visualization.html#cb128-3" tabindex="-1"></a><span class="co"># 5 unfertilized</span></span>
-<span id="cb128-4"><a href="data-visualization.html#cb128-4" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb128-5"><a href="data-visualization.html#cb128-5" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p>The vague &amp; defeasible rule of thumb of good data visualization (according to the Edward Tufte).</p>
+<blockquote>
+<p>“Communicate a maximal degree of relevant true information in a way that minimizes the recipient’s effort of retrieving this information.”</p>
+</blockquote>
+<div id="scatter-plot" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Scatter plot<a href="data-visualization.html#scatter-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>?geom_point</code>, try to to know more about geom_points
+The point geom is used to create scatterplots. The scatterplot is most useful for displaying the relationship between two continuous variables.</p>
+<div id="let-us-make-some-data." class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Let us make some data.<a href="data-visualization.html#let-us-make-some-data." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Imagine Shubham and I are planning to do a research on how Cashew and Teak respond to a new fertilizer we invented!!</p>
+<p>To make the data we will use <code>ggplot2</code> and <code>dplyr</code>, we can use <code>tidyverse</code> so both packages will be loaded.</p>
+<p>We also want to check if the trees in the fertilizer treatment can store more carbon. I don’t know how scientifically correct this is but I am using this resource <a href="https://naturalresources.wales/media/687190/eng-worksheet-carbon-storage-calculator.pdf">Carbon storage calculator</a>. Based on this I wrote a function, read the <code>Chapter 6</code> for additional information on functions.</p>
+</div>
+<div id="carbon-calculator-function" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> carbon calculator function<a href="data-visualization.html#carbon-calculator-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-visualization.html#cb130-1" tabindex="-1"></a>carbon_calc <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb130-2"><a href="data-visualization.html#cb130-2" tabindex="-1"></a>  dry_weight <span class="ot">=</span> x <span class="sc">*</span> <span class="fl">13.0933</span></span>
+<span id="cb130-3"><a href="data-visualization.html#cb130-3" tabindex="-1"></a>  carbon <span class="ot">=</span> <span class="fu">round</span>(dry_weight <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb130-4"><a href="data-visualization.html#cb130-4" tabindex="-1"></a>  <span class="fu">return</span>(carbon)</span>
+<span id="cb130-5"><a href="data-visualization.html#cb130-5" tabindex="-1"></a>}</span>
+<span id="cb130-6"><a href="data-visualization.html#cb130-6" tabindex="-1"></a></span>
+<span id="cb130-7"><a href="data-visualization.html#cb130-7" tabindex="-1"></a><span class="fu">carbon_calc</span>(<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-visualization.html#cb132-1" tabindex="-1"></a><span class="co"># treatment (factor)</span></span>
+<span id="cb132-2"><a href="data-visualization.html#cb132-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb132-3"><a href="data-visualization.html#cb132-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -214,121 +257,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-visualization.html#cb132-1" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;cashew&#39;</span>, <span class="dv">10</span>), </span>
-<span id="cb132-2"><a href="data-visualization.html#cb132-2" tabindex="-1"></a>          <span class="fu">rep</span>(<span class="st">&#39;teak&#39;</span>, <span class="dv">10</span>))</span>
-<span id="cb132-3"><a href="data-visualization.html#cb132-3" tabindex="-1"></a></span>
-<span id="cb132-4"><a href="data-visualization.html#cb132-4" tabindex="-1"></a></span>
-<span id="cb132-5"><a href="data-visualization.html#cb132-5" tabindex="-1"></a>gbh <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>,</span>
-<span id="cb132-6"><a href="data-visualization.html#cb132-6" tabindex="-1"></a>             <span class="at">mean =</span> <span class="dv">30</span>,</span>
-<span id="cb132-7"><a href="data-visualization.html#cb132-7" tabindex="-1"></a>             <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb132-8"><a href="data-visualization.html#cb132-8" tabindex="-1"></a></span>
-<span id="cb132-9"><a href="data-visualization.html#cb132-9" tabindex="-1"></a><span class="co"># make a data frame</span></span>
-<span id="cb132-10"><a href="data-visualization.html#cb132-10" tabindex="-1"></a></span>
-<span id="cb132-11"><a href="data-visualization.html#cb132-11" tabindex="-1"></a></span>
-<span id="cb132-12"><a href="data-visualization.html#cb132-12" tabindex="-1"></a></span>
-<span id="cb132-13"><a href="data-visualization.html#cb132-13" tabindex="-1"></a><span class="co"># 20 trees of same sp.</span></span>
-<span id="cb132-14"><a href="data-visualization.html#cb132-14" tabindex="-1"></a><span class="co"># different GBH</span></span>
-<span id="cb132-15"><a href="data-visualization.html#cb132-15" tabindex="-1"></a></span>
-<span id="cb132-16"><a href="data-visualization.html#cb132-16" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;cashew&#39;</span>, <span class="dv">10</span>), </span>
-<span id="cb132-17"><a href="data-visualization.html#cb132-17" tabindex="-1"></a>          <span class="fu">rep</span>(<span class="st">&#39;teak&#39;</span>, <span class="dv">10</span>))</span>
-<span id="cb132-18"><a href="data-visualization.html#cb132-18" tabindex="-1"></a></span>
-<span id="cb132-19"><a href="data-visualization.html#cb132-19" tabindex="-1"></a>gbh <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>,</span>
-<span id="cb132-20"><a href="data-visualization.html#cb132-20" tabindex="-1"></a>             <span class="at">mean =</span> <span class="dv">30</span>,</span>
-<span id="cb132-21"><a href="data-visualization.html#cb132-21" tabindex="-1"></a>             <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb132-22"><a href="data-visualization.html#cb132-22" tabindex="-1"></a></span>
-<span id="cb132-23"><a href="data-visualization.html#cb132-23" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(name, gbh)</span>
-<span id="cb132-24"><a href="data-visualization.html#cb132-24" tabindex="-1"></a></span>
-<span id="cb132-25"><a href="data-visualization.html#cb132-25" tabindex="-1"></a><span class="fu">View</span>(df)</span>
-<span id="cb132-26"><a href="data-visualization.html#cb132-26" tabindex="-1"></a></span>
-<span id="cb132-27"><a href="data-visualization.html#cb132-27" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb132-28"><a href="data-visualization.html#cb132-28" tabindex="-1"></a></span>
-<span id="cb132-29"><a href="data-visualization.html#cb132-29" tabindex="-1"></a>newdf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb132-30"><a href="data-visualization.html#cb132-30" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">co2=</span> gbh <span class="sc">*</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>)) <span class="co"># co2 is a new column based gbh</span></span>
-<span id="cb132-31"><a href="data-visualization.html#cb132-31" tabindex="-1"></a></span>
-<span id="cb132-32"><a href="data-visualization.html#cb132-32" tabindex="-1"></a><span class="fu">str</span>(newdf)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
-##  $ name: chr  &quot;cashew&quot; &quot;cashew&quot; &quot;cashew&quot; &quot;cashew&quot; ...
-##  $ gbh : num  29.4 30.9 31 28.4 29.7 ...
-##  $ co2 : num  4.12 8.12 12.58 5.43 9.22 ...</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-visualization.html#cb134-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">y =</span> co2, <span class="at">x =</span> gbh, <span class="at">col=</span> name)) <span class="sc">+</span></span>
-<span id="cb134-2"><a href="data-visualization.html#cb134-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb134-3"><a href="data-visualization.html#cb134-3" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-visualization.html#cb136-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">y =</span> co2, <span class="at">x =</span> name, <span class="at">fill=</span> name)) <span class="sc">+</span></span>
-<span id="cb136-2"><a href="data-visualization.html#cb136-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-2.png" width="672" /></p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="data-visualization.html#cb137-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">y =</span> gbh, <span class="at">x =</span> name, <span class="at">fill=</span> name)) <span class="sc">+</span></span>
-<span id="cb137-2"><a href="data-visualization.html#cb137-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-3.png" width="672" /></p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-visualization.html#cb138-1" tabindex="-1"></a><span class="co"># new df with treatment</span></span>
-<span id="cb138-2"><a href="data-visualization.html#cb138-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">007</span>) <span class="co"># any number</span></span>
-<span id="cb138-3"><a href="data-visualization.html#cb138-3" tabindex="-1"></a></span>
-<span id="cb138-4"><a href="data-visualization.html#cb138-4" tabindex="-1"></a></span>
-<span id="cb138-5"><a href="data-visualization.html#cb138-5" tabindex="-1"></a></span>
-<span id="cb138-6"><a href="data-visualization.html#cb138-6" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;nofertilizer&#39;</span>, <span class="dv">50</span>), </span>
-<span id="cb138-7"><a href="data-visualization.html#cb138-7" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">&#39;fertilizer&#39;</span>, <span class="dv">50</span>))</span>
-<span id="cb138-8"><a href="data-visualization.html#cb138-8" tabindex="-1"></a></span>
-<span id="cb138-9"><a href="data-visualization.html#cb138-9" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;cashew&#39;</span>, <span class="dv">100</span>), </span>
-<span id="cb138-10"><a href="data-visualization.html#cb138-10" tabindex="-1"></a>          <span class="fu">rep</span>(<span class="st">&#39;teak&#39;</span>, <span class="dv">100</span>))</span>
-<span id="cb138-11"><a href="data-visualization.html#cb138-11" tabindex="-1"></a></span>
-<span id="cb138-12"><a href="data-visualization.html#cb138-12" tabindex="-1"></a>gbh <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>,</span>
-<span id="cb138-13"><a href="data-visualization.html#cb138-13" tabindex="-1"></a>             <span class="at">mean =</span> <span class="dv">15</span>,</span>
-<span id="cb138-14"><a href="data-visualization.html#cb138-14" tabindex="-1"></a>             <span class="at">sd =</span> <span class="dv">4</span>),</span>
-<span id="cb138-15"><a href="data-visualization.html#cb138-15" tabindex="-1"></a>         <span class="fu">rnorm</span>(<span class="dv">50</span>,</span>
-<span id="cb138-16"><a href="data-visualization.html#cb138-16" tabindex="-1"></a>               <span class="at">mean =</span> <span class="dv">30</span>,</span>
-<span id="cb138-17"><a href="data-visualization.html#cb138-17" tabindex="-1"></a>               <span class="at">sd =</span> <span class="dv">6</span>))</span>
-<span id="cb138-18"><a href="data-visualization.html#cb138-18" tabindex="-1"></a></span>
-<span id="cb138-19"><a href="data-visualization.html#cb138-19" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(treatment, </span>
-<span id="cb138-20"><a href="data-visualization.html#cb138-20" tabindex="-1"></a>                 name, </span>
-<span id="cb138-21"><a href="data-visualization.html#cb138-21" tabindex="-1"></a>                 gbh)</span>
-<span id="cb138-22"><a href="data-visualization.html#cb138-22" tabindex="-1"></a></span>
-<span id="cb138-23"><a href="data-visualization.html#cb138-23" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-visualization.html#cb136-1" tabindex="-1"></a><span class="co"># new df with treatment</span></span>
+<span id="cb136-2"><a href="data-visualization.html#cb136-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">007</span>) <span class="co"># the name is Bond, James Bond= 007, its just a number. If you want the same result as mine use this set.seed number.</span></span>
+<span id="cb136-3"><a href="data-visualization.html#cb136-3" tabindex="-1"></a><span class="co"># new df with treatment</span></span>
+<span id="cb136-4"><a href="data-visualization.html#cb136-4" tabindex="-1"></a></span>
+<span id="cb136-5"><a href="data-visualization.html#cb136-5" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;nofertilizer&#39;</span>, <span class="dv">50</span>), </span>
+<span id="cb136-6"><a href="data-visualization.html#cb136-6" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">&#39;fertilizer&#39;</span>, <span class="dv">50</span>))</span>
+<span id="cb136-7"><a href="data-visualization.html#cb136-7" tabindex="-1"></a></span>
+<span id="cb136-8"><a href="data-visualization.html#cb136-8" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;cashew&#39;</span>, <span class="dv">100</span>), </span>
+<span id="cb136-9"><a href="data-visualization.html#cb136-9" tabindex="-1"></a>          <span class="fu">rep</span>(<span class="st">&#39;teak&#39;</span>, <span class="dv">100</span>))</span>
+<span id="cb136-10"><a href="data-visualization.html#cb136-10" tabindex="-1"></a></span>
+<span id="cb136-11"><a href="data-visualization.html#cb136-11" tabindex="-1"></a>gbh <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>,</span>
+<span id="cb136-12"><a href="data-visualization.html#cb136-12" tabindex="-1"></a>             <span class="at">mean =</span> <span class="dv">15</span>,</span>
+<span id="cb136-13"><a href="data-visualization.html#cb136-13" tabindex="-1"></a>             <span class="at">sd =</span> <span class="dv">4</span>),</span>
+<span id="cb136-14"><a href="data-visualization.html#cb136-14" tabindex="-1"></a>         <span class="fu">rnorm</span>(<span class="dv">50</span>,</span>
+<span id="cb136-15"><a href="data-visualization.html#cb136-15" tabindex="-1"></a>               <span class="at">mean =</span> <span class="dv">30</span>,</span>
+<span id="cb136-16"><a href="data-visualization.html#cb136-16" tabindex="-1"></a>               <span class="at">sd =</span> <span class="dv">6</span>))</span>
+<span id="cb136-17"><a href="data-visualization.html#cb136-17" tabindex="-1"></a></span>
+<span id="cb136-18"><a href="data-visualization.html#cb136-18" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(treatment, </span>
+<span id="cb136-19"><a href="data-visualization.html#cb136-19" tabindex="-1"></a>                 name, </span>
+<span id="cb136-20"><a href="data-visualization.html#cb136-20" tabindex="-1"></a>                 gbh)</span>
+<span id="cb136-21"><a href="data-visualization.html#cb136-21" tabindex="-1"></a></span>
+<span id="cb136-22"><a href="data-visualization.html#cb136-22" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    200 obs. of  3 variables:
 ##  $ treatment: chr  &quot;nofertilizer&quot; &quot;nofertilizer&quot; &quot;nofertilizer&quot; &quot;nofertilizer&quot; ...
 ##  $ name     : chr  &quot;cashew&quot; &quot;cashew&quot; &quot;cashew&quot; &quot;cashew&quot; ...
 ##  $ gbh      : num  24.1 10.2 12.2 13.4 11.1 ...</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-visualization.html#cb140-1" tabindex="-1"></a>co <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>) <span class="co"># kg</span></span>
-<span id="cb140-2"><a href="data-visualization.html#cb140-2" tabindex="-1"></a></span>
-<span id="cb140-3"><a href="data-visualization.html#cb140-3" tabindex="-1"></a>newdf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb140-4"><a href="data-visualization.html#cb140-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">co2=</span> gbh <span class="sc">*</span> co) <span class="co"># co2 is a new column based gbh</span></span>
-<span id="cb140-5"><a href="data-visualization.html#cb140-5" tabindex="-1"></a></span>
-<span id="cb140-6"><a href="data-visualization.html#cb140-6" tabindex="-1"></a><span class="fu">str</span>(newdf)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    200 obs. of  4 variables:
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-visualization.html#cb138-1" tabindex="-1"></a>newdf <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb138-2"><a href="data-visualization.html#cb138-2" tabindex="-1"></a>  <span class="fu">filter</span>(gbh  <span class="sc">&gt;=</span> <span class="dv">15</span>) </span>
+<span id="cb138-3"><a href="data-visualization.html#cb138-3" tabindex="-1"></a></span>
+<span id="cb138-4"><a href="data-visualization.html#cb138-4" tabindex="-1"></a>co <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(newdf<span class="sc">$</span>gbh), <span class="fu">carbon_calc</span>(<span class="dv">1</span>), <span class="fl">1.5</span>) <span class="co"># kg</span></span>
+<span id="cb138-5"><a href="data-visualization.html#cb138-5" tabindex="-1"></a></span>
+<span id="cb138-6"><a href="data-visualization.html#cb138-6" tabindex="-1"></a>newdf <span class="ot">&lt;-</span> newdf <span class="sc">%&gt;%</span> </span>
+<span id="cb138-7"><a href="data-visualization.html#cb138-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">co2=</span> gbh <span class="sc">*</span> co) <span class="co"># co2 is a new column based gbh</span></span>
+<span id="cb138-8"><a href="data-visualization.html#cb138-8" tabindex="-1"></a></span>
+<span id="cb138-9"><a href="data-visualization.html#cb138-9" tabindex="-1"></a><span class="fu">str</span>(newdf)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    154 obs. of  4 variables:
 ##  $ treatment: chr  &quot;nofertilizer&quot; &quot;nofertilizer&quot; &quot;nofertilizer&quot; &quot;nofertilizer&quot; ...
 ##  $ name     : chr  &quot;cashew&quot; &quot;cashew&quot; &quot;cashew&quot; &quot;cashew&quot; ...
-##  $ gbh      : num  24.1 10.2 12.2 13.4 11.1 ...
-##  $ co2      : num  6.08 2.64 2.35 1.1 2.57 ...</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="data-visualization.html#cb142-1" tabindex="-1"></a><span class="fu">names</span>(newdf)</span></code></pre></div>
+##  $ gbh      : num  24.1 18 15.6 23.8 16.4 ...
+##  $ co2      : num  188 142 107 124 123 ...</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-visualization.html#cb140-1" tabindex="-1"></a><span class="fu">names</span>(newdf)</span></code></pre></div>
 <pre><code>## [1] &quot;treatment&quot; &quot;name&quot;      &quot;gbh&quot;       &quot;co2&quot;</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="data-visualization.html#cb144-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">x =</span> gbh, <span class="at">y =</span> co2, <span class="at">col=</span> name)) <span class="sc">+</span></span>
-<span id="cb144-2"><a href="data-visualization.html#cb144-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb144-3"><a href="data-visualization.html#cb144-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">+</span></span>
-<span id="cb144-4"><a href="data-visualization.html#cb144-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> name)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="data-visualization.html#cb142-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">x =</span> gbh, <span class="at">y =</span> co2, <span class="at">col=</span> name)) <span class="sc">+</span></span>
+<span id="cb142-2"><a href="data-visualization.html#cb142-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb142-3"><a href="data-visualization.html#cb142-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">+</span></span>
+<span id="cb142-4"><a href="data-visualization.html#cb142-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> name)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-4.png" width="672" /></p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="data-visualization.html#cb146-1" tabindex="-1"></a><span class="co"># ?facet_wrap</span></span>
-<span id="cb146-2"><a href="data-visualization.html#cb146-2" tabindex="-1"></a><span class="co"># help(facet_wrap)</span></span>
-<span id="cb146-3"><a href="data-visualization.html#cb146-3" tabindex="-1"></a></span>
-<span id="cb146-4"><a href="data-visualization.html#cb146-4" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> co2, <span class="at">fill=</span> name)) <span class="sc">+</span></span>
-<span id="cb146-5"><a href="data-visualization.html#cb146-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb146-6"><a href="data-visualization.html#cb146-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> name)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-5.png" width="672" /></p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="data-visualization.html#cb147-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">y =</span> co2, <span class="at">x =</span> name, <span class="at">fill=</span> name)) <span class="sc">+</span></span>
-<span id="cb147-2"><a href="data-visualization.html#cb147-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-6.png" width="672" /></p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="data-visualization.html#cb148-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf, <span class="fu">aes</span>(<span class="at">y =</span> gbh, <span class="at">x =</span> name, <span class="at">fill=</span> name)) <span class="sc">+</span></span>
-<span id="cb148-2"><a href="data-visualization.html#cb148-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-7.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="data-visualization.html#cb144-1" tabindex="-1"></a><span class="co"># To know what facet_wrap is</span></span>
+<span id="cb144-2"><a href="data-visualization.html#cb144-2" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="data-visualization.html#cb144-3" tabindex="-1"></a><span class="co"># ?facet_wrap</span></span>
+<span id="cb144-4"><a href="data-visualization.html#cb144-4" tabindex="-1"></a><span class="co"># help(facet_wrap)</span></span></code></pre></div>
+</div>
+</div>
+<div id="box-plot" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Box plot<a href="data-visualization.html#box-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A box and whisker plot or diagram (otherwise known as a boxplot), is a graph summarising a set of data. The shape of the boxplot shows how the data is distributed and it also shows any <a href="https://www.ncl.ac.uk/webtemplate/ask-assets/external/maths-resources/statistics/descriptive-statistics/other-measures-of-dispersion.html#Outliers">outliers</a>. It is a useful way to compare different sets of data as you can draw more than one boxplot per graph. These can be displayed alongside a number line, horizontally or vertically.<br />
+<em>Reading a Box and Whisker Plot</em><br />
+Interpreting a boxplot can be done once you understand what the different lines mean on a box and whisker diagram. The line splitting the box in two represents the median value. This shows that 50 % of the data lies on the left hand side of the median value and 50 % lies on the right hand side. The left edge of the box represents the lower <a href="https://www.ncl.ac.uk/webtemplate/ask-assets/external/maths-resources/statistics/descriptive-statistics/other-measures-of-dispersion.html#Quartiles">quartile</a>; it shows the value at which the first 25 % of the data falls up to. The right edge of the box shows the upper <a href="https://www.ncl.ac.uk/webtemplate/ask-assets/external/maths-resources/statistics/descriptive-statistics/other-measures-of-dispersion.html#Quartiles">quartile</a>; it shows that 25 % of the data lies to the right of the upper quartile value. The values at which the horizontal lines stop at are the values of the upper and lower values of the data. The single points on the diagram show the outliers.<br />
+<code>geom_boxplot</code> function from <code>ggplot2</code> compactly displays the distribution of a continuous variable and a categorical variable, see Figure (Boxplot)</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-50"></span>
+<img src="pictures/boxplot.jpg" alt="Boxplot" width="100%" />
+<p class="caption">
+Figure 8.1: Boxplot
+</p>
+</div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="data-visualization.html#cb145-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf,</span>
+<span id="cb145-2"><a href="data-visualization.html#cb145-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> treatment,</span>
+<span id="cb145-3"><a href="data-visualization.html#cb145-3" tabindex="-1"></a>           <span class="at">y =</span> co2,</span>
+<span id="cb145-4"><a href="data-visualization.html#cb145-4" tabindex="-1"></a>           <span class="at">fill =</span> name)) <span class="sc">+</span></span>
+<span id="cb145-5"><a href="data-visualization.html#cb145-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb145-6"><a href="data-visualization.html#cb145-6" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> name)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="data-visualization.html#cb146-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> newdf,</span>
+<span id="cb146-2"><a href="data-visualization.html#cb146-2" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> gbh,</span>
+<span id="cb146-3"><a href="data-visualization.html#cb146-3" tabindex="-1"></a>           <span class="at">x =</span> treatment,</span>
+<span id="cb146-4"><a href="data-visualization.html#cb146-4" tabindex="-1"></a>           <span class="at">fill =</span> name)) <span class="sc">+</span></span>
+<span id="cb146-5"><a href="data-visualization.html#cb146-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-2.png" width="672" /></p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="import-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="import-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="wordcloud.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

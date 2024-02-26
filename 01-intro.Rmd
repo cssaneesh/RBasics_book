@@ -4,7 +4,6 @@
 
 The R arithmetic operators allows us to do math operations, like sums, divisions or multiplications, among others. The following table summarizes all base R arithmetic operators.  
 
-
 *Arithmetic operators*  
 `+` 	Plus  
 `–` 	Minus  
@@ -47,7 +46,7 @@ Example of another function, `sum`
 sum(1, 2, 3)
 ```
 
-##  Reserved words
+## Reserved words
 
 There are also reserved words you can’t use, like `TRUE`, `FALSE`, `NULL`, among others. You can see the full list of R reserved words typing `help(Reserved)` or `?Reserved`. It not advisable to use these words outside quotes ('', "") or backtick (`) quotes.     
 
@@ -99,7 +98,6 @@ y <- 7
 
 x * y
 ```
-
 
 ## Relational / comparison operators in R 
 Comparison or relational operators are designed to compare objects and the output of these comparisons are of type boolean. To clarify, the following table summarizes the R relational operators.

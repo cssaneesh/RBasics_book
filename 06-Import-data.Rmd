@@ -1,5 +1,6 @@
 # Import data
-Although creating data frames from existing data structures is extremely useful, by far the most common approach is to create a data frame by importing data from an external file. To do this, you’ll need to have your data correctly formatted and saved in a file format that R is able to recognise. Fortunately for us, R is able to recognise a wide variety of file formats, although in reality you’ll probably end up only using two or three regularly.  
+## Importing from .csv file
+Although creating data frames from existing data structures is extremely useful, by far the most common approach is to create a data frame by importing data from an external file. To do this, you’ll need to have your data correctly formatted and saved in a file format that R is able to recognize. Fortunately for us, R is able to recognize a wide variety of file formats, although in reality you’ll probably end up only using two or three regularly.  
 *Saving files to import*
 The easiest method of creating a data file to import into R is to enter your data into a spreadsheet using either Microsoft Excel or LibreOffice Calc and save the spreadsheet as a comma delimited file. 
 To save a spreadsheet as a comma delimited file in Microsoft Excel or LibreOffice Calc select File -> Save as ... from the main menu. You will need to specify the location (project folder) you want to save your file in the ‘Save in folder’ option and the name of the file in the ‘Name’ option. In the drop down menu located above the ‘Save’ button change the default ‘Save as type:’ to ‘CSV(Comma delimited) (*.csv)’.  
@@ -21,6 +22,8 @@ write.csv(df, # copied name
           row.names = FALSE) # to avoid auto generated row names
 ```
 
+
+## Read .csv
 Now to read the newly created `family.csv` file to `R` or any other file there are many ways.
 
 ```{r}
@@ -30,15 +33,14 @@ str(family)
 ```
 
 The other method is to import file from `Files`, `Plots`, `Packages` panel.  
-Go to `Files`
+Go to `Files`, left click on the .csv file you want to import to `R`, `Import Dataset...` a new window will open, `Import Text Data`
 
-```{r, echo= FALSE, out.width= "70%", fig.align='center', fig.cap= 'Files .csv file'}
+```{r, echo= FALSE, out.width= "100%", fig.align='center', fig.cap= 'Files .csv file'}
  knitr::include_graphics('pictures/importcsv.jpg')
 ```
 
-and 
 
-```{r, echo= FALSE, out.width= "70%", fig.align='center', fig.cap= 'Files .csv file'}
+```{r, echo= FALSE, out.width= "100%", fig.align='center', fig.cap= 'Files .csv file'}
  knitr::include_graphics('pictures/importcsv_1.jpg') 
 library(readr)
 ```

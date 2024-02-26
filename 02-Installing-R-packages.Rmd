@@ -1,4 +1,5 @@
 # Installing R packages
+## Package
 An R package is a library of functions that have been developed to cover some needs or specific scientific methods that are not implemented in base R.  
 
 The Comprehensive R Archive Network (CRAN) is the official R packages repository, with thousands of free R packages available. Most of them have been developed by Data Scientists, Statisticians, Professors and researchers.  
@@ -7,7 +8,11 @@ First, you need to look for the name of the package you want to install. You may
 
 Once you decided what package to install, just call the `install.packages` function with the name of the package inside the parenthesis `()` with quotation marks `" "` or `' '`. As an example, we are going to install the `calendR` package, that allows creating monthly and yearly calendars, but you can install the package you prefer.  
 
-`install.packages('calendR')`
+```{r}
+# install.packages('calendR')
+```
+
+
 
 Once you see a similar looking message in the Console "The downloaded binary packages are in "drive user downloaded_packages", it is good idea to add a comment `#` before install.packages like this `# install.packages('calendR')` to avoid installing the same package again and again!
 
@@ -31,9 +36,8 @@ In addition, you can find out where the packages are going to be installed calli
 
 Alternatively, you can install R packages from the menu (Package).
 
-```{r, echo= FALSE, out.width= "70%", fig.align='center', fig.cap= 'Pacage'}
+```{r, echo= FALSE, out.width= "70%", fig.align='center', fig.cap= 'Package'}
  knitr::include_graphics('pictures/Package panel.jpg') 
-
 ```
 
 In RStudio go to Tools → Install Packages and in the Install from option select Repository (CRAN) and then specify the packages you want.  

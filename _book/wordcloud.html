@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Wordcloud | An introduction R</title>
+  <meta name="description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Wordcloud | An introduction R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Wordcloud | An introduction R" />
+  
+  <meta name="twitter:description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
+  
+
+<meta name="author" content="Saneesh" />
+
+
+<meta name="date" content="2024-02-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-visualization.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An introduction R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>1.1</b> How to use this book</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.2</b> Installation</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#project"><i class="fa fa-check"></i><b>1.3</b> Project</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-operators.html"><a href="r-operators.html"><i class="fa fa-check"></i><b>2</b> R operators</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-operators.html"><a href="r-operators.html#arithmetic-operators"><i class="fa fa-check"></i><b>2.1</b> Arithmetic operators</a></li>
+<li class="chapter" data-level="2.2" data-path="r-operators.html"><a href="r-operators.html#functions"><i class="fa fa-check"></i><b>2.2</b> Functions</a></li>
+<li class="chapter" data-level="2.3" data-path="r-operators.html"><a href="r-operators.html#reserved-words"><i class="fa fa-check"></i><b>2.3</b> Reserved words</a></li>
+<li class="chapter" data-level="2.4" data-path="r-operators.html"><a href="r-operators.html#variables"><i class="fa fa-check"></i><b>2.4</b> Variables</a></li>
+<li class="chapter" data-level="2.5" data-path="r-operators.html"><a href="r-operators.html#documenting-code"><i class="fa fa-check"></i><b>2.5</b> Documenting code</a></li>
+<li class="chapter" data-level="2.6" data-path="r-operators.html"><a href="r-operators.html#relational-comparison-operators-in-r"><i class="fa fa-check"></i><b>2.6</b> Relational / comparison operators in R</a></li>
+<li class="chapter" data-level="2.7" data-path="r-operators.html"><a href="r-operators.html#data-types"><i class="fa fa-check"></i><b>2.7</b> Data types</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>3</b> Installing R packages</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="installing-r-packages.html"><a href="installing-r-packages.html#package"><i class="fa fa-check"></i><b>3.1</b> Package</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectors-matrices.html"><a href="vectors-matrices.html"><i class="fa fa-check"></i><b>4</b> Vectors &amp; matrices</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="vectors-matrices.html"><a href="vectors-matrices.html#numeric-vector"><i class="fa fa-check"></i><b>4.1</b> Numeric vector</a></li>
+<li class="chapter" data-level="4.2" data-path="vectors-matrices.html"><a href="vectors-matrices.html#mathematical-operation"><i class="fa fa-check"></i><b>4.2</b> Mathematical operation</a></li>
+<li class="chapter" data-level="4.3" data-path="vectors-matrices.html"><a href="vectors-matrices.html#indexing"><i class="fa fa-check"></i><b>4.3</b> Indexing</a></li>
+<li class="chapter" data-level="4.4" data-path="vectors-matrices.html"><a href="vectors-matrices.html#numeric-matrices"><i class="fa fa-check"></i><b>4.4</b> Numeric matrices</a></li>
+<li class="chapter" data-level="4.5" data-path="vectors-matrices.html"><a href="vectors-matrices.html#names-for-vectors-matrices-and-arrays"><i class="fa fa-check"></i><b>4.5</b> Names for vectors, matrices and arrays</a></li>
+<li class="chapter" data-level="4.6" data-path="vectors-matrices.html"><a href="vectors-matrices.html#characters-or-strings"><i class="fa fa-check"></i><b>4.6</b> Characters or strings</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="list-data-frame.html"><a href="list-data-frame.html"><i class="fa fa-check"></i><b>5</b> List &amp; Data frame</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="list-data-frame.html"><a href="list-data-frame.html#making-a-data-frame"><i class="fa fa-check"></i><b>5.1</b> Making a data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="names-functions.html"><a href="names-functions.html"><i class="fa fa-check"></i><b>6</b> Names functions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="names-functions.html"><a href="names-functions.html#loops-and-maps"><i class="fa fa-check"></i><b>6.1</b> Loops and maps</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="import-data.html"><a href="import-data.html"><i class="fa fa-check"></i><b>7</b> Import data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="import-data.html"><a href="import-data.html#importing-from-.csv-file"><i class="fa fa-check"></i><b>7.1</b> Importing from .csv file</a></li>
+<li class="chapter" data-level="7.2" data-path="import-data.html"><a href="import-data.html#read-.csv"><i class="fa fa-check"></i><b>7.2</b> Read .csv</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>8</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-visualization.html"><a href="data-visualization.html#scatter-plot"><i class="fa fa-check"></i><b>8.1</b> Scatter plot</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="data-visualization.html"><a href="data-visualization.html#let-us-make-some-data."><i class="fa fa-check"></i><b>8.1.1</b> Let us make some data.</a></li>
+<li class="chapter" data-level="8.1.2" data-path="data-visualization.html"><a href="data-visualization.html#carbon-calculator-function"><i class="fa fa-check"></i><b>8.1.2</b> carbon calculator function</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data-visualization.html"><a href="data-visualization.html#box-plot"><i class="fa fa-check"></i><b>8.2</b> Box plot</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wordcloud.html"><a href="wordcloud.html"><i class="fa fa-check"></i><b>9</b> Wordcloud</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="wordcloud.html"><a href="wordcloud.html#wordcloud-from-data-frame"><i class="fa fa-check"></i><b>9.1</b> Wordcloud from data frame</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="wordcloud.html"><a href="wordcloud.html#read-data"><i class="fa fa-check"></i><b>9.1.1</b> Read data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="wordcloud.html"><a href="wordcloud.html#wordcloud-from-text-data"><i class="fa fa-check"></i><b>9.2</b> Wordcloud from text data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An introduction R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="wordcloud" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Wordcloud<a href="wordcloud.html#wordcloud" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="wordcloud-from-data-frame" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Wordcloud from data frame<a href="wordcloud.html#wordcloud-from-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="wordcloud.html#cb147-1" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;)</span></span>
+<span id="cb147-2"><a href="wordcloud.html#cb147-2" tabindex="-1"></a><span class="co"># install.packages(&#39;wordcloud&#39;)</span></span>
+<span id="cb147-3"><a href="wordcloud.html#cb147-3" tabindex="-1"></a></span>
+<span id="cb147-4"><a href="wordcloud.html#cb147-4" tabindex="-1"></a><span class="co"># add packages----</span></span>
+<span id="cb147-5"><a href="wordcloud.html#cb147-5" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># to clean data</span></span>
+<span id="cb147-6"><a href="wordcloud.html#cb147-6" tabindex="-1"></a><span class="fu">library</span>(wordcloud) <span class="co"># to make wordcloud</span></span></code></pre></div>
+<pre><code>## Loading required package: RColorBrewer</code></pre>
+<div id="read-data" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Read data<a href="wordcloud.html#read-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="wordcloud.html#cb149-1" tabindex="-1"></a>words <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Name=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;James Bond&#39;</span>, <span class="dv">30</span>),</span>
+<span id="cb149-2"><a href="wordcloud.html#cb149-2" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">&#39;Iron Man&#39;</span>, <span class="dv">20</span>),</span>
+<span id="cb149-3"><a href="wordcloud.html#cb149-3" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">&#39;Spider Man&#39;</span>, <span class="dv">5</span>),</span>
+<span id="cb149-4"><a href="wordcloud.html#cb149-4" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">&#39;Caption America&#39;</span>, <span class="dv">4</span>)),</span>
+<span id="cb149-5"><a href="wordcloud.html#cb149-5" tabindex="-1"></a>                    <span class="at">Tag=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;Spy&#39;</span>, <span class="dv">30</span>),</span>
+<span id="cb149-6"><a href="wordcloud.html#cb149-6" tabindex="-1"></a>                               <span class="fu">rep</span>(<span class="st">&#39;Super hero&#39;</span>, <span class="dv">29</span>)),</span>
+<span id="cb149-7"><a href="wordcloud.html#cb149-7" tabindex="-1"></a>                    <span class="at">Duty=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;kill&#39;</span>, <span class="dv">30</span>),</span>
+<span id="cb149-8"><a href="wordcloud.html#cb149-8" tabindex="-1"></a>                            <span class="fu">rep</span>(<span class="st">&#39;developer&#39;</span>, <span class="dv">20</span>),</span>
+<span id="cb149-9"><a href="wordcloud.html#cb149-9" tabindex="-1"></a>                            <span class="fu">rep</span>(<span class="st">&#39;save&#39;</span>, <span class="dv">5</span>),</span>
+<span id="cb149-10"><a href="wordcloud.html#cb149-10" tabindex="-1"></a>                            <span class="fu">rep</span>(<span class="st">&#39;save&#39;</span>, <span class="dv">4</span>)))</span>
+<span id="cb149-11"><a href="wordcloud.html#cb149-11" tabindex="-1"></a></span>
+<span id="cb149-12"><a href="wordcloud.html#cb149-12" tabindex="-1"></a><span class="fu">str</span>(words) <span class="co"># display the internal structure `object`, here, our `data`</span></span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    59 obs. of  3 variables:
+##  $ Name: chr  &quot;James Bond&quot; &quot;James Bond&quot; &quot;James Bond&quot; &quot;James Bond&quot; ...
+##  $ Tag : chr  &quot;Spy&quot; &quot;Spy&quot; &quot;Spy&quot; &quot;Spy&quot; ...
+##  $ Duty: chr  &quot;kill&quot; &quot;kill&quot; &quot;kill&quot; &quot;kill&quot; ...</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="wordcloud.html#cb151-1" tabindex="-1"></a><span class="fu">head</span>(words, <span class="dv">3</span>) <span class="co"># change the number in the () and see more rows</span></span></code></pre></div>
+<pre><code>##         Name Tag Duty
+## 1 James Bond Spy kill
+## 2 James Bond Spy kill
+## 3 James Bond Spy kill</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="wordcloud.html#cb153-1" tabindex="-1"></a><span class="fu">tail</span>(words, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##               Name        Tag Duty
+## 57 Caption America Super hero save
+## 58 Caption America Super hero save
+## 59 Caption America Super hero save</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="wordcloud.html#cb155-1" tabindex="-1"></a><span class="co"># let us see what is the duty of our heros</span></span>
+<span id="cb155-2"><a href="wordcloud.html#cb155-2" tabindex="-1"></a><span class="fu">names</span>(words) <span class="co"># to see the column names of words</span></span></code></pre></div>
+<pre><code>## [1] &quot;Name&quot; &quot;Tag&quot;  &quot;Duty&quot;</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="wordcloud.html#cb157-1" tabindex="-1"></a><span class="co"># to add count to the data</span></span>
+<span id="cb157-2"><a href="wordcloud.html#cb157-2" tabindex="-1"></a>words1 <span class="ot">&lt;-</span> words <span class="sc">%&gt;%</span> <span class="fu">count</span>(Duty) <span class="co"># words1 is a new data frame we created from words</span></span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="wordcloud.html#cb158-1" tabindex="-1"></a><span class="fu">names</span>(words1)</span></code></pre></div>
+<pre><code>## [1] &quot;Duty&quot; &quot;n&quot;</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="wordcloud.html#cb160-1" tabindex="-1"></a><span class="fu">max</span>(words1<span class="sc">$</span>n) <span class="co"># copy this number for max.words=</span></span></code></pre></div>
+<pre><code>## [1] 30</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="wordcloud.html#cb162-1" tabindex="-1"></a><span class="co"># par(bg=&quot;black&quot;) # for black background</span></span></code></pre></div>
+<p>Before you plot, make sure that the <code>Files</code>, <code>Plot</code> <code>Packages</code> panel is maximized!! click on the rectangular button on top of the File, Plots, Packages window.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="wordcloud.html#cb163-1" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="at">word =</span> words1<span class="sc">$</span>Duty, <span class="co"># BroaderGoal from the words1</span></span>
+<span id="cb163-2"><a href="wordcloud.html#cb163-2" tabindex="-1"></a>          <span class="at">freq =</span> words1<span class="sc">$</span>n, <span class="co"># n from the words1 data frame</span></span>
+<span id="cb163-3"><a href="wordcloud.html#cb163-3" tabindex="-1"></a>          <span class="at">min.freq =</span> <span class="dv">1</span>, <span class="co"># minimum frequency of a word</span></span>
+<span id="cb163-4"><a href="wordcloud.html#cb163-4" tabindex="-1"></a>          <span class="at">max.words =</span> <span class="dv">14</span>, <span class="co"># maximum frequency of a word</span></span>
+<span id="cb163-5"><a href="wordcloud.html#cb163-5" tabindex="-1"></a>          <span class="at">random.order=</span>T,</span>
+<span id="cb163-6"><a href="wordcloud.html#cb163-6" tabindex="-1"></a>          <span class="co"># colors = brewer.pal(6, &#39;GnBu&#39;) # remove comment from</span></span>
+<span id="cb163-7"><a href="wordcloud.html#cb163-7" tabindex="-1"></a>          <span class="co"># these code one by one and see how color change</span></span>
+<span id="cb163-8"><a href="wordcloud.html#cb163-8" tabindex="-1"></a>          <span class="co"># colors = brewer.pal(6, &#39;Reds&#39;)</span></span>
+<span id="cb163-9"><a href="wordcloud.html#cb163-9" tabindex="-1"></a>          <span class="co"># colors = brewer.pal(6, &#39;Blues&#39;)</span></span>
+<span id="cb163-10"><a href="wordcloud.html#cb163-10" tabindex="-1"></a>          <span class="co"># colors = brewer.pal(1, &#39;Reds&#39;)</span></span>
+<span id="cb163-11"><a href="wordcloud.html#cb163-11" tabindex="-1"></a>          <span class="at">colors=</span><span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Dark2&quot;</span>)</span>
+<span id="cb163-12"><a href="wordcloud.html#cb163-12" tabindex="-1"></a>          )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>Let us see what are they known as</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="wordcloud.html#cb164-1" tabindex="-1"></a><span class="fu">names</span>(words) <span class="co"># to see the column names of words</span></span></code></pre></div>
+<pre><code>## [1] &quot;Name&quot; &quot;Tag&quot;  &quot;Duty&quot;</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="wordcloud.html#cb166-1" tabindex="-1"></a><span class="co"># know the data</span></span>
+<span id="cb166-2"><a href="wordcloud.html#cb166-2" tabindex="-1"></a>words2 <span class="ot">&lt;-</span> words <span class="sc">%&gt;%</span> <span class="fu">count</span>(Tag)</span>
+<span id="cb166-3"><a href="wordcloud.html#cb166-3" tabindex="-1"></a></span>
+<span id="cb166-4"><a href="wordcloud.html#cb166-4" tabindex="-1"></a><span class="fu">names</span>(words2)</span></code></pre></div>
+<pre><code>## [1] &quot;Tag&quot; &quot;n&quot;</code></pre>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="wordcloud.html#cb168-1" tabindex="-1"></a><span class="fu">max</span>(words2<span class="sc">$</span>n) <span class="co"># copy this number for max.words=</span></span></code></pre></div>
+<pre><code>## [1] 30</code></pre>
+<p>Before you plot, make sure that the plot window or Plot pane is maximized!! click on the rectangular button on top of the <code>File</code>, <code>Plots</code>, <code>Packages</code> window.</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="wordcloud.html#cb170-1" tabindex="-1"></a><span class="co"># par(bg=&quot;black&quot;) # for black background</span></span>
+<span id="cb170-2"><a href="wordcloud.html#cb170-2" tabindex="-1"></a></span>
+<span id="cb170-3"><a href="wordcloud.html#cb170-3" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="at">word =</span> words2<span class="sc">$</span>Tag, <span class="co"># BroderBackground from the words2</span></span>
+<span id="cb170-4"><a href="wordcloud.html#cb170-4" tabindex="-1"></a>          <span class="at">freq =</span> words2<span class="sc">$</span>n, <span class="co"># n from the words2 data frame</span></span>
+<span id="cb170-5"><a href="wordcloud.html#cb170-5" tabindex="-1"></a>          <span class="at">min.freq =</span> <span class="dv">1</span>, <span class="co"># minimum frequency of a word</span></span>
+<span id="cb170-6"><a href="wordcloud.html#cb170-6" tabindex="-1"></a>          <span class="at">max.words =</span> <span class="dv">10</span>, <span class="co"># maximum frequency of a word</span></span>
+<span id="cb170-7"><a href="wordcloud.html#cb170-7" tabindex="-1"></a>          <span class="at">random.order=</span>T,</span>
+<span id="cb170-8"><a href="wordcloud.html#cb170-8" tabindex="-1"></a>          <span class="co"># vfont= c(family= &#39;gothic english&#39;, face= &#39;plain&#39;), # fonts, remove comment from</span></span>
+<span id="cb170-9"><a href="wordcloud.html#cb170-9" tabindex="-1"></a>          <span class="co"># these code one by one and see how font and color change</span></span>
+<span id="cb170-10"><a href="wordcloud.html#cb170-10" tabindex="-1"></a>          <span class="co"># vfont= c(family= &#39;script&#39;, face= &#39;plain&#39;),</span></span>
+<span id="cb170-11"><a href="wordcloud.html#cb170-11" tabindex="-1"></a>          <span class="co"># vfont= c(family= &#39;serif&#39;, face= &#39;plain&#39;),</span></span>
+<span id="cb170-12"><a href="wordcloud.html#cb170-12" tabindex="-1"></a>          <span class="co"># vfont= c(family= &#39;sans serif&#39;, face= &#39;plain&#39;),</span></span>
+<span id="cb170-13"><a href="wordcloud.html#cb170-13" tabindex="-1"></a>          <span class="at">vfont=</span> <span class="fu">c</span>(<span class="at">family=</span> <span class="st">&#39;serif&#39;</span>, <span class="at">face=</span> <span class="st">&#39;cyrillic&#39;</span>),</span>
+<span id="cb170-14"><a href="wordcloud.html#cb170-14" tabindex="-1"></a>          <span class="co"># colors = brewer.pal(6, &#39;GnBu&#39;) # colors</span></span>
+<span id="cb170-15"><a href="wordcloud.html#cb170-15" tabindex="-1"></a>          <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">6</span>, <span class="st">&#39;Reds&#39;</span>)</span>
+<span id="cb170-16"><a href="wordcloud.html#cb170-16" tabindex="-1"></a>          <span class="co"># colors = brewer.pal(6, &#39;Blues&#39;)</span></span>
+<span id="cb170-17"><a href="wordcloud.html#cb170-17" tabindex="-1"></a>          <span class="co"># colors = brewer.pal(1, &#39;Reds&#39;)</span></span>
+<span id="cb170-18"><a href="wordcloud.html#cb170-18" tabindex="-1"></a>          <span class="co"># colors=brewer.pal(8, &quot;Dark2&quot;)</span></span>
+<span id="cb170-19"><a href="wordcloud.html#cb170-19" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p>If the plot doesn’t look good restart R from Session tab or press Ctrl+Shift+F10, then start from add packages :). If you want to change background bg= “black” or other colors do the above, restart. If you are happy with a plot, Export&gt; Save as PDF&gt; select PDF Size&gt; change directory if you want.</p>
+</div>
+</div>
+<div id="wordcloud-from-text-data" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Wordcloud from text data<a href="wordcloud.html#wordcloud-from-text-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="wordcloud.html#cb171-1" tabindex="-1"></a><span class="co"># packages----</span></span>
+<span id="cb171-2"><a href="wordcloud.html#cb171-2" tabindex="-1"></a><span class="co"># install.packages(&#39;tm&#39;)</span></span>
+<span id="cb171-3"><a href="wordcloud.html#cb171-3" tabindex="-1"></a><span class="co"># install.packages(&#39;wordcloud&#39;)</span></span></code></pre></div>
+<p>Load packages</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="wordcloud.html#cb172-1" tabindex="-1"></a><span class="fu">library</span>(tm)</span></code></pre></div>
+<pre><code>## Loading required package: NLP</code></pre>
+<pre><code>## 
+## Attaching package: &#39;NLP&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     annotate</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="wordcloud.html#cb176-1" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span></code></pre></div>
+<p>Text</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="wordcloud.html#cb177-1" tabindex="-1"></a>mytext <span class="ot">&lt;-</span> <span class="st">&quot;India, a vibrant land where ancient traditions dance with modern aspirations, pulsates with the rhythm of diversity. Its people, a kaleidoscope of ethnicities, languages, and religions, paint a masterpiece of cultural richness. From the snow-capped peaks of the Himalayas to the sun-drenched beaches of Goa, India&#39;s diversity unfolds in every corner. In bustling metropolises like Mumbai and Delhi, the aroma of spices mingles with the scent of incense, each street alive with the echoes of diverse laughter and prayers. Travel south, and serene temple bells chime in Kerala, their melodies intertwining with the rhythmic beats of Kathakali dancers. Journey east, and the vibrant hues of sarees in Assam blend seamlessly with the bamboo houses of tribal communities. Every region in India whispers its own unique story, its people celebrating their distinct cultures with festivals like Holi, Diwali, and Onam, each a vibrant explosion of colors and traditions. The spirit of India lies in its diversity, a vibrant tapestry woven with countless threads of languages, customs, and beliefs.It is a land where unity thrives amidst difference, where the warmth of its people embraces every visitor, inviting them to experience the magic of its kaleidoscope soul. So, come, explore the diversity of India, and discover a land that will forever captivate your heart.&quot;</span> <span class="co"># inside the &quot; &quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="wordcloud.html#cb178-1" tabindex="-1"></a>mycorpus <span class="ot">&lt;-</span> <span class="fu">Corpus</span>(<span class="fu">VectorSource</span>(mytext))</span>
+<span id="cb178-2"><a href="wordcloud.html#cb178-2" tabindex="-1"></a></span>
+<span id="cb178-3"><a href="wordcloud.html#cb178-3" tabindex="-1"></a>mycorpus <span class="ot">&lt;-</span> <span class="fu">tm_map</span>(mycorpus, removePunctuation)</span></code></pre></div>
+<pre><code>## Warning in tm_map.SimpleCorpus(mycorpus, removePunctuation): transformation
+## drops documents</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="wordcloud.html#cb180-1" tabindex="-1"></a>mycorpus <span class="ot">&lt;-</span> <span class="fu">tm_map</span>(mycorpus, removeNumbers)</span></code></pre></div>
+<pre><code>## Warning in tm_map.SimpleCorpus(mycorpus, removeNumbers): transformation drops
+## documents</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="wordcloud.html#cb182-1" tabindex="-1"></a>mycorpus <span class="ot">&lt;-</span> <span class="fu">tm_map</span>(mycorpus, removeWords, <span class="fu">stopwords</span>(<span class="st">&quot;english&quot;</span>))</span></code></pre></div>
+<pre><code>## Warning in tm_map.SimpleCorpus(mycorpus, removeWords, stopwords(&quot;english&quot;)):
+## transformation drops documents</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="wordcloud.html#cb184-1" tabindex="-1"></a>mywords <span class="ot">&lt;-</span> <span class="fu">TermDocumentMatrix</span>(mycorpus)</span>
+<span id="cb184-2"><a href="wordcloud.html#cb184-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(mywords)</span>
+<span id="cb184-3"><a href="wordcloud.html#cb184-3" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">rowSums</span>(m), <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb184-4"><a href="wordcloud.html#cb184-4" tabindex="-1"></a></span>
+<span id="cb184-5"><a href="wordcloud.html#cb184-5" tabindex="-1"></a><span class="co">#make wordcloud----</span></span>
+<span id="cb184-6"><a href="wordcloud.html#cb184-6" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="fu">names</span>(v), v, <span class="at">scale=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="fl">0.5</span>), <span class="at">min.freq =</span> <span class="dv">1</span>,</span>
+<span id="cb184-7"><a href="wordcloud.html#cb184-7" tabindex="-1"></a>          <span class="at">max.words=</span><span class="dv">10</span>, <span class="at">random.order=</span><span class="cn">FALSE</span>, <span class="at">rot.per=</span><span class="fl">0.35</span>, </span>
+<span id="cb184-8"><a href="wordcloud.html#cb184-8" tabindex="-1"></a>          <span class="at">colors=</span><span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Dark2&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="wordcloud.html#cb185-1" tabindex="-1"></a><span class="co"># a word cloud for Indian budget</span></span>
+<span id="cb185-2"><a href="wordcloud.html#cb185-2" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;rvest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     guess_encoding</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="wordcloud.html#cb188-1" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb188-2"><a href="wordcloud.html#cb188-2" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb188-3"><a href="wordcloud.html#cb188-3" tabindex="-1"></a><span class="fu">library</span>(Rgraphviz)</span></code></pre></div>
+<pre><code>## Loading required package: graph</code></pre>
+<pre><code>## Loading required package: BiocGenerics</code></pre>
+<pre><code>## 
+## Attaching package: &#39;BiocGenerics&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:NLP&#39;:
+## 
+##     annotation</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     combine, intersect, setdiff, union</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     IQR, mad, sd, var, xtabs</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+##     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+##     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+##     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+##     Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+##     table, tapply, union, unique, unsplit, which.max, which.min</code></pre>
+<pre><code>## Loading required package: grid</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="wordcloud.html#cb197-1" tabindex="-1"></a><span class="co"># install.packages(&quot;BiocManager&quot;)</span></span>
+<span id="cb197-2"><a href="wordcloud.html#cb197-2" tabindex="-1"></a><span class="co"># BiocManager::install(&quot;Rgraphviz&quot;)</span></span>
+<span id="cb197-3"><a href="wordcloud.html#cb197-3" tabindex="-1"></a></span>
+<span id="cb197-4"><a href="wordcloud.html#cb197-4" tabindex="-1"></a></span>
+<span id="cb197-5"><a href="wordcloud.html#cb197-5" tabindex="-1"></a><span class="co"># budget</span></span>
+<span id="cb197-6"><a href="wordcloud.html#cb197-6" tabindex="-1"></a><span class="co"># set path to the textfile</span></span>
+<span id="cb197-7"><a href="wordcloud.html#cb197-7" tabindex="-1"></a>budget <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&#39;budget_speech.txt&#39;</span>, <span class="at">fileEncoding=</span><span class="st">&quot;UCS-2LE&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on &#39;budget_speech.txt&#39;</code></pre>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="wordcloud.html#cb199-1" tabindex="-1"></a><span class="co"># Remove punctuation and numbers</span></span>
+<span id="cb199-2"><a href="wordcloud.html#cb199-2" tabindex="-1"></a>budget <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[[:punct:]0-9]&quot;</span>, <span class="st">&quot;&quot;</span>, budget, <span class="at">useBytes =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb199-3"><a href="wordcloud.html#cb199-3" tabindex="-1"></a></span>
+<span id="cb199-4"><a href="wordcloud.html#cb199-4" tabindex="-1"></a><span class="co"># covert text to lowercase</span></span>
+<span id="cb199-5"><a href="wordcloud.html#cb199-5" tabindex="-1"></a>budget <span class="ot">&lt;-</span> <span class="fu">tolower</span>(budget)</span>
+<span id="cb199-6"><a href="wordcloud.html#cb199-6" tabindex="-1"></a></span>
+<span id="cb199-7"><a href="wordcloud.html#cb199-7" tabindex="-1"></a><span class="co"># remove stopwords</span></span>
+<span id="cb199-8"><a href="wordcloud.html#cb199-8" tabindex="-1"></a>stopwords <span class="ot">&lt;-</span> <span class="fu">stopwords</span>(<span class="st">&#39;SMART&#39;</span>) <span class="co"># options &#39;english&#39;</span></span>
+<span id="cb199-9"><a href="wordcloud.html#cb199-9" tabindex="-1"></a></span>
+<span id="cb199-10"><a href="wordcloud.html#cb199-10" tabindex="-1"></a>budget <span class="ot">&lt;-</span> budget[<span class="sc">!</span>budget <span class="sc">%in%</span> stopwords]</span>
+<span id="cb199-11"><a href="wordcloud.html#cb199-11" tabindex="-1"></a></span>
+<span id="cb199-12"><a href="wordcloud.html#cb199-12" tabindex="-1"></a></span>
+<span id="cb199-13"><a href="wordcloud.html#cb199-13" tabindex="-1"></a></span>
+<span id="cb199-14"><a href="wordcloud.html#cb199-14" tabindex="-1"></a><span class="co"># Create a corpus from the text</span></span>
+<span id="cb199-15"><a href="wordcloud.html#cb199-15" tabindex="-1"></a>corpus <span class="ot">&lt;-</span> <span class="fu">Corpus</span>(<span class="fu">VectorSource</span>(budget))</span>
+<span id="cb199-16"><a href="wordcloud.html#cb199-16" tabindex="-1"></a></span>
+<span id="cb199-17"><a href="wordcloud.html#cb199-17" tabindex="-1"></a><span class="co"># Create a term-document matrix</span></span>
+<span id="cb199-18"><a href="wordcloud.html#cb199-18" tabindex="-1"></a>tdm <span class="ot">&lt;-</span> <span class="fu">TermDocumentMatrix</span>(corpus)</span>
+<span id="cb199-19"><a href="wordcloud.html#cb199-19" tabindex="-1"></a></span>
+<span id="cb199-20"><a href="wordcloud.html#cb199-20" tabindex="-1"></a><span class="co"># Convert the tdm to a matrix and calculate word frequencies</span></span>
+<span id="cb199-21"><a href="wordcloud.html#cb199-21" tabindex="-1"></a>matr <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(tdm)</span>
+<span id="cb199-22"><a href="wordcloud.html#cb199-22" tabindex="-1"></a>word_freq <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">rowSums</span>(matr), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="wordcloud.html#cb200-1" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="fu">names</span>(word_freq), </span>
+<span id="cb200-2"><a href="wordcloud.html#cb200-2" tabindex="-1"></a>          word_freq, <span class="at">max.words =</span> <span class="dv">50</span>, <span class="co"># can change number of words </span></span>
+<span id="cb200-3"><a href="wordcloud.html#cb200-3" tabindex="-1"></a>          <span class="at">random.order =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb200-4"><a href="wordcloud.html#cb200-4" tabindex="-1"></a>          <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Dark2&quot;</span>))</span></code></pre></div>
+<p>It will look something like this!</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
+<img src="pictures/budget_Speech.png" alt="Budget word cloud" width="100%" />
+<p class="caption">
+Figure 9.1: Budget word cloud
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-visualization.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-wordcloud.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
