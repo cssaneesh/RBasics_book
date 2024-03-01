@@ -1,5 +1,4 @@
-Welcome! 
-
-This is a simple book written based on the notes for students of NRG, TISS-HYD ([https://github.com/RBasics](https://html-preview.github.io/?url=https://github.com/cssaneesh/RBasics_book/blob/main/_book/index.html#installation)). 
+Hello,  
+This book is an introduction to R using tidyverse package, written based on the notes for students of NRG, TISS-HYD [Download from GitHub](https://github.com/cssaneesh/RBasics_book/blob/main/_book/_main.pdf). 
 
 
