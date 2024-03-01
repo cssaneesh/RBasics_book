@@ -12,6 +12,7 @@ fig:unnamed-chunk-46
 fig:unnamed-chunk-47
 fig:unnamed-chunk-50
 fig:unnamed-chunk-64
+fig:unnamed-chunk-73
 about
 how-to-use-this-book
 installation
@@ -49,3 +50,8 @@ wordcloud
 wordcloud-from-data-frame
 read-data
 wordcloud-from-text-data
+probability
+create-vectors
+make-a-data-frame-name-it-i-gave-df-data-frame
+calculating-total-sightings
+calculate-the-probability-of-seeing-each-species

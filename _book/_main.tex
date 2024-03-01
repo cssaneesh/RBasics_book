@@ -125,7 +125,7 @@
 
 \title{An introduction R}
 \author{Saneesh}
-\date{2024-02-26}
+\date{2024-03-01}
 
 \begin{document}
 \maketitle
@@ -1898,6 +1898,150 @@ It will look something like this!
 }
 
 \caption{Budget word cloud}\label{fig:unnamed-chunk-64}
+\end{figure}
+
+\hypertarget{probability}{%
+\chapter{Probability}\label{probability}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}dplyr\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}ggplot2\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{007}\NormalTok{) }\CommentTok{\# to ensure that the random sampling results are reproducible.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{create-vectors}{%
+\section{create vectors}\label{create-vectors}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{species}\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Tiger\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Deer\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Leopard\textquotesingle{}}\NormalTok{)}
+\NormalTok{tiger\_reserve }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Kanha\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Bandipur\textquotesingle{}}\NormalTok{)}
+\NormalTok{sighting }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{) }\CommentTok{\# 1 (for sighting) and 0 (for no sighting)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{make-a-data-frame-name-it-i-gave-df-data-frame}{%
+\section{make a data frame, name it I gave df= data frame}\label{make-a-data-frame-name-it-i-gave-df-data-frame}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{species=} \FunctionTok{sample}\NormalTok{(}\AttributeTok{x =}\NormalTok{ species, }\DecValTok{20}\NormalTok{, }\AttributeTok{replace =}\NormalTok{ T), }\CommentTok{\# replace= T, for repeated sampling (with replacement)}
+  \AttributeTok{tiger\_reserve=} \FunctionTok{sample}\NormalTok{(}\AttributeTok{x =}\NormalTok{ tiger\_reserve, }\DecValTok{20}\NormalTok{, }\AttributeTok{replace =}\NormalTok{ T),}
+  \AttributeTok{sighting=} \FunctionTok{sample}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sighting, }\DecValTok{20}\NormalTok{, }\AttributeTok{replace =}\NormalTok{ T)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    species tiger_reserve sighting
+## 1     Deer         Kanha        1
+## 2  Leopard      Bandipur        0
+## 3  Leopard         Kanha        1
+## 4  Leopard      Bandipur        1
+## 5     Deer      Bandipur        0
+## 6  Leopard         Kanha        0
+## 7     Deer      Bandipur        1
+## 8     Deer      Bandipur        1
+## 9  Leopard      Bandipur        1
+## 10    Deer      Bandipur        1
+## 11 Leopard         Kanha        0
+## 12 Leopard      Bandipur        0
+## 13    Deer      Bandipur        0
+## 14 Leopard         Kanha        1
+## 15    Deer         Kanha        0
+## 16 Leopard      Bandipur        0
+## 17 Leopard      Bandipur        1
+## 18    Deer         Kanha        0
+## 19    Deer         Kanha        0
+## 20 Leopard         Kanha        0
+\end{verbatim}
+
+\hypertarget{calculating-total-sightings}{%
+\section{calculating total sightings}\label{calculating-total-sightings}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sightings\_total }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(species, tiger\_reserve) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{total\_sightings =} \FunctionTok{sum}\NormalTok{(sighting))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'species'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\hypertarget{calculate-the-probability-of-seeing-each-species}{%
+\section{Calculate the probability of seeing each species}\label{calculate-the-probability-of-seeing-each-species}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{probabilities }\OtherTok{\textless{}{-}}\NormalTok{ sightings\_total }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{ (}\AttributeTok{probability =}\NormalTok{ total\_sightings }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(total\_sightings)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{ (}\AttributeTok{percentage =}\NormalTok{ probability}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(report)}
+\FunctionTok{print}\NormalTok{(probabilities)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 5
+## # Groups:   species [2]
+##   species tiger_reserve total_sightings probability percentage
+##   <chr>   <chr>                   <dbl>       <dbl>      <dbl>
+## 1 Deer    Bandipur                    3        0.75         75
+## 2 Deer    Kanha                       1        0.25         25
+## 3 Leopard Bandipur                    3        0.6          60
+## 4 Leopard Kanha                       2        0.4          40
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{report}\SpecialCharTok{::}\FunctionTok{report\_statistics}\NormalTok{(probabilities)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Deer, Bandipur, n = 1; Kanha, n = 1
+## Deer, n = 2, Mean = 2.00, SD = 1.41, Median = 2.00, MAD = 1.48, range: [1, 3], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Deer, n = 2, Mean = 0.50, SD = 0.35, Median = 0.50, MAD = 0.37, range: [0.25, 0.75], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Deer, n = 2, Mean = 50.00, SD = 35.36, Median = 50.00, MAD = 37.06, range: [25, 75], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Leopard, Bandipur, n = 1; Kanha, n = 1
+## Leopard, n = 2, Mean = 2.50, SD = 0.71, Median = 2.50, MAD = 0.74, range: [2, 3], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Leopard, n = 2, Mean = 0.50, SD = 0.14, Median = 0.50, MAD = 0.15, range: [0.40, 0.60], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Leopard, n = 2, Mean = 50.00, SD = 14.14, Median = 50.00, MAD = 14.83, range: [40, 60], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{probabilities }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{ species, }\AttributeTok{y=}\NormalTok{ probability, }\AttributeTok{fill=}\NormalTok{ tiger\_reserve))}\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{\textquotesingle{}identity\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/unnamed-chunk-73-1.pdf}
+\caption{\label{fig:unnamed-chunk-73}Probability}
 \end{figure}
 
   \bibliography{book.bib,packages.bib}

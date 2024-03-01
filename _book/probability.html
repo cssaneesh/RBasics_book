@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Names functions | An introduction R</title>
+  <title>Chapter 10 Probability | An introduction R</title>
   <meta name="description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Names functions | An introduction R" />
+  <meta property="og:title" content="Chapter 10 Probability | An introduction R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Names functions | An introduction R" />
+  <meta name="twitter:title" content="Chapter 10 Probability | An introduction R" />
   
   <meta name="twitter:description" content="This book is an an introduction R using tidyverse packages and wrote using the bookdown package." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="list-data-frame.html"/>
-<link rel="next" href="import-data.html"/>
+<link rel="prev" href="wordcloud.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -226,43 +226,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="names-functions" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Names functions<a href="names-functions.html#names-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The special operator supplied by base R to create new function is the keyword <code>function</code>. Here is an example of defining a new function with two input variables <code>x</code> and <code>y</code> that returns a computation based on these numbers. We assign a newly created function to the variable cool_function so that we can use this name to call the function later. Notice that the use of the return keyword is optional here. If it is left out, the evaluation of the last line is returned.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="names-functions.html#cb119-1" tabindex="-1"></a><span class="co"># define a new function</span></span>
-<span id="cb119-2"><a href="names-functions.html#cb119-2" tabindex="-1"></a><span class="co"># - takes two numbers x &amp; y as argument</span></span>
-<span id="cb119-3"><a href="names-functions.html#cb119-3" tabindex="-1"></a><span class="co"># - returns x + y</span></span>
-<span id="cb119-4"><a href="names-functions.html#cb119-4" tabindex="-1"></a></span>
-<span id="cb119-5"><a href="names-functions.html#cb119-5" tabindex="-1"></a>sum_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb119-6"><a href="names-functions.html#cb119-6" tabindex="-1"></a>  z <span class="ot">=</span> x <span class="sc">+</span> y</span>
-<span id="cb119-7"><a href="names-functions.html#cb119-7" tabindex="-1"></a>  <span class="fu">return</span>(z)</span>
-<span id="cb119-8"><a href="names-functions.html#cb119-8" tabindex="-1"></a>}</span>
-<span id="cb119-9"><a href="names-functions.html#cb119-9" tabindex="-1"></a></span>
-<span id="cb119-10"><a href="names-functions.html#cb119-10" tabindex="-1"></a><span class="fu">sum_function</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">4</span>)</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="names-functions.html#cb121-1" tabindex="-1"></a><span class="fu">sum_function</span>(<span class="dv">12</span>, <span class="dv">4</span>)</span></code></pre></div>
-<pre><code>## [1] 16</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="names-functions.html#cb123-1" tabindex="-1"></a><span class="co"># define a new function</span></span>
-<span id="cb123-2"><a href="names-functions.html#cb123-2" tabindex="-1"></a><span class="co"># we know x and total we want to calculate percentage</span></span>
-<span id="cb123-3"><a href="names-functions.html#cb123-3" tabindex="-1"></a></span>
-<span id="cb123-4"><a href="names-functions.html#cb123-4" tabindex="-1"></a>percentage_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb123-5"><a href="names-functions.html#cb123-5" tabindex="-1"></a>  percentage <span class="ot">=</span> (x <span class="sc">/</span> y)<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb123-6"><a href="names-functions.html#cb123-6" tabindex="-1"></a>  <span class="fu">return</span>(percentage)</span>
-<span id="cb123-7"><a href="names-functions.html#cb123-7" tabindex="-1"></a>}</span>
-<span id="cb123-8"><a href="names-functions.html#cb123-8" tabindex="-1"></a></span>
-<span id="cb123-9"><a href="names-functions.html#cb123-9" tabindex="-1"></a><span class="fu">percentage_function</span> (<span class="dv">360</span>, <span class="dv">600</span>)</span></code></pre></div>
-<pre><code>## [1] 60</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="names-functions.html#cb125-1" tabindex="-1"></a><span class="co"># we know percentage and total we want to calculate x</span></span>
-<span id="cb125-2"><a href="names-functions.html#cb125-2" tabindex="-1"></a></span>
-<span id="cb125-3"><a href="names-functions.html#cb125-3" tabindex="-1"></a>reverse_percentage_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb125-4"><a href="names-functions.html#cb125-4" tabindex="-1"></a>  percentage <span class="ot">=</span> (x <span class="sc">/</span> <span class="dv">100</span>)<span class="sc">*</span>y</span>
-<span id="cb125-5"><a href="names-functions.html#cb125-5" tabindex="-1"></a>  <span class="fu">return</span>(percentage)</span>
-<span id="cb125-6"><a href="names-functions.html#cb125-6" tabindex="-1"></a>}</span>
-<span id="cb125-7"><a href="names-functions.html#cb125-7" tabindex="-1"></a></span>
-<span id="cb125-8"><a href="names-functions.html#cb125-8" tabindex="-1"></a><span class="fu">reverse_percentage_function</span> (<span class="dv">60</span>, <span class="dv">600</span>)</span></code></pre></div>
-<pre><code>## [1] 360</code></pre>
-<div id="loops-and-maps" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Loops and maps<a href="names-functions.html#loops-and-maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="probability" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Probability<a href="probability.html#probability" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="probability.html#cb201-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;dplyr&#39;</span>, <span class="st">&#39;ggplot2&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="probability.html#cb202-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">007</span>) <span class="co"># to ensure that the random sampling results are reproducible.</span></span></code></pre></div>
+<div id="create-vectors" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> create vectors<a href="probability.html#create-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="probability.html#cb203-1" tabindex="-1"></a>species<span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;Tiger&#39;</span>, <span class="st">&#39;Deer&#39;</span>, <span class="st">&#39;Leopard&#39;</span>)</span>
+<span id="cb203-2"><a href="probability.html#cb203-2" tabindex="-1"></a>tiger_reserve <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;Kanha&#39;</span>, <span class="st">&#39;Bandipur&#39;</span>)</span>
+<span id="cb203-3"><a href="probability.html#cb203-3" tabindex="-1"></a>sighting <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># 1 (for sighting) and 0 (for no sighting)</span></span></code></pre></div>
+</div>
+<div id="make-a-data-frame-name-it-i-gave-df-data-frame" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> make a data frame, name it I gave df= data frame<a href="probability.html#make-a-data-frame-name-it-i-gave-df-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="probability.html#cb204-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb204-2"><a href="probability.html#cb204-2" tabindex="-1"></a>  <span class="at">species=</span> <span class="fu">sample</span>(<span class="at">x =</span> species, <span class="dv">20</span>, <span class="at">replace =</span> T), <span class="co"># replace= T, for repeated sampling (with replacement)</span></span>
+<span id="cb204-3"><a href="probability.html#cb204-3" tabindex="-1"></a>  <span class="at">tiger_reserve=</span> <span class="fu">sample</span>(<span class="at">x =</span> tiger_reserve, <span class="dv">20</span>, <span class="at">replace =</span> T),</span>
+<span id="cb204-4"><a href="probability.html#cb204-4" tabindex="-1"></a>  <span class="at">sighting=</span> <span class="fu">sample</span>(<span class="at">x =</span> sighting, <span class="dv">20</span>, <span class="at">replace =</span> T)</span>
+<span id="cb204-5"><a href="probability.html#cb204-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="probability.html#cb205-1" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<pre><code>##    species tiger_reserve sighting
+## 1     Deer         Kanha        1
+## 2  Leopard      Bandipur        0
+## 3  Leopard         Kanha        1
+## 4  Leopard      Bandipur        1
+## 5     Deer      Bandipur        0
+## 6  Leopard         Kanha        0
+## 7     Deer      Bandipur        1
+## 8     Deer      Bandipur        1
+## 9  Leopard      Bandipur        1
+## 10    Deer      Bandipur        1
+## 11 Leopard         Kanha        0
+## 12 Leopard      Bandipur        0
+## 13    Deer      Bandipur        0
+## 14 Leopard         Kanha        1
+## 15    Deer         Kanha        0
+## 16 Leopard      Bandipur        0
+## 17 Leopard      Bandipur        1
+## 18    Deer         Kanha        0
+## 19    Deer         Kanha        0
+## 20 Leopard         Kanha        0</code></pre>
+</div>
+<div id="calculating-total-sightings" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> calculating total sightings<a href="probability.html#calculating-total-sightings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="probability.html#cb207-1" tabindex="-1"></a>sightings_total <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb207-2"><a href="probability.html#cb207-2" tabindex="-1"></a>  <span class="fu">group_by</span>(species, tiger_reserve) <span class="sc">%&gt;%</span></span>
+<span id="cb207-3"><a href="probability.html#cb207-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_sightings =</span> <span class="fu">sum</span>(sighting))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;species&#39;. You can override using the
+## `.groups` argument.</code></pre>
+</div>
+<div id="calculate-the-probability-of-seeing-each-species" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Calculate the probability of seeing each species<a href="probability.html#calculate-the-probability-of-seeing-each-species" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="probability.html#cb209-1" tabindex="-1"></a>probabilities <span class="ot">&lt;-</span> sightings_total <span class="sc">%&gt;%</span></span>
+<span id="cb209-2"><a href="probability.html#cb209-2" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">probability =</span> total_sightings <span class="sc">/</span> <span class="fu">sum</span>(total_sightings)) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-3"><a href="probability.html#cb209-3" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">percentage =</span> probability<span class="sc">*</span><span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="probability.html#cb210-1" tabindex="-1"></a><span class="fu">library</span>(report)</span>
+<span id="cb210-2"><a href="probability.html#cb210-2" tabindex="-1"></a><span class="fu">print</span>(probabilities)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 5
+## # Groups:   species [2]
+##   species tiger_reserve total_sightings probability percentage
+##   &lt;chr&gt;   &lt;chr&gt;                   &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;
+## 1 Deer    Bandipur                    3        0.75         75
+## 2 Deer    Kanha                       1        0.25         25
+## 3 Leopard Bandipur                    3        0.6          60
+## 4 Leopard Kanha                       2        0.4          40</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="probability.html#cb212-1" tabindex="-1"></a>report<span class="sc">::</span><span class="fu">report_statistics</span>(probabilities)</span></code></pre></div>
+<pre><code>## Deer, Bandipur, n = 1; Kanha, n = 1
+## Deer, n = 2, Mean = 2.00, SD = 1.41, Median = 2.00, MAD = 1.48, range: [1, 3], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Deer, n = 2, Mean = 0.50, SD = 0.35, Median = 0.50, MAD = 0.37, range: [0.25, 0.75], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Deer, n = 2, Mean = 50.00, SD = 35.36, Median = 50.00, MAD = 37.06, range: [25, 75], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Leopard, Bandipur, n = 1; Kanha, n = 1
+## Leopard, n = 2, Mean = 2.50, SD = 0.71, Median = 2.50, MAD = 0.74, range: [2, 3], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Leopard, n = 2, Mean = 0.50, SD = 0.14, Median = 0.50, MAD = 0.15, range: [0.40, 0.60], Skewness = 0.00, Kurtosis = -2.00, 0 missing
+## Leopard, n = 2, Mean = 50.00, SD = 14.14, Median = 50.00, MAD = 14.83, range: [40, 60], Skewness = 0.00, Kurtosis = -2.00, 0 missing</code></pre>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="probability.html#cb214-1" tabindex="-1"></a>probabilities <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> species, <span class="at">y=</span> probability, <span class="at">fill=</span> tiger_reserve))<span class="sc">+</span></span>
+<span id="cb214-2"><a href="probability.html#cb214-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
+<img src="_main_files/figure-html/unnamed-chunk-73-1.png" alt="Probability" width="672" />
+<p class="caption">
+Figure 10.1: Probability
+</p>
+</div>
 
 </div>
 </div>
@@ -271,8 +314,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="list-data-frame.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="import-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="wordcloud.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -303,7 +346,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-Functions.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-Probability.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,0 +1,61 @@
+# Probability
+
+```{r}
+library('dplyr', 'ggplot2')
+```
+
+
+```{r}
+set.seed(007) # to ensure that the random sampling results are reproducible.
+
+```
+
+
+## create vectors
+```{r}
+species= c('Tiger', 'Deer', 'Leopard')
+tiger_reserve = c('Kanha', 'Bandipur')
+sighting = c(1, 0) # 1 (for sighting) and 0 (for no sighting)
+```
+
+## make a data frame, name it I gave df= data frame
+```{r}
+df <- data.frame(
+  species= sample(x = species, 20, replace = T), # replace= T, for repeated sampling (with replacement)
+  tiger_reserve= sample(x = tiger_reserve, 20, replace = T),
+  sighting= sample(x = sighting, 20, replace = T)
+)
+```
+
+```{r}
+print(df)
+```
+
+## calculating total sightings
+
+```{r}
+sightings_total <- df %>%
+  group_by(species, tiger_reserve) %>%
+  summarize(total_sightings = sum(sighting))
+```
+
+## Calculate the probability of seeing each species
+```{r}
+probabilities <- sightings_total %>%
+  mutate (probability = total_sightings / sum(total_sightings)) %>% 
+  mutate (percentage = probability*100)
+```
+
+```{r}
+
+library(report)
+print(probabilities)
+
+report::report_statistics(probabilities)
+```
+
+```{r, fig.cap= 'Probability'}
+probabilities %>% ggplot(aes(x= species, y= probability, fill= tiger_reserve))+
+  geom_bar(stat = 'identity')
+```
+
